@@ -28,6 +28,6 @@ Old but valid google code documentation can be found here : https://code.google.
 ![Nuits sonores 2012](http://v3ga.github.io/Images/ofxJavascript/2012_360000_live.jpg)
 ![Interface](http://v3ga.github.io/Images/ofxJavascript/2012_360000_interface.jpg)
 
-### 360 000 (2009)
+### ofLiveCoding (2009)
 * Project page : https://code.google.com/p/oflivecoding/
 	
