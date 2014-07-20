@@ -1,0 +1,57 @@
+<install>
+	
+	<version>0.1</version>
+	<author>Julien 'v3ga' Gachadoat</author>
+	<url>http://v3ga.net</url>
+	
+	<add>
+		
+		<!-- 	=====================================================================	-->
+		<!--	========================== add per project using this addon =========	-->
+		<!-- 	=====================================================================	-->
+	
+		<src>
+			<folder name="addons/ofxJavascript/src">
+				<file>../../../addons/ofxJavascript/src/ofxJavascript.h</file>
+				<file>../../../addons/ofxJavascript/src/ofxJavascript.cpp</file>
+				<file>../../../addons/ofxJavascript/src/ofxJSScript.h</file>
+				<file>../../../addons/ofxJavascript/src/ofxJSScript.cpp</file>
+				<file>../../../addons/ofxJavascript/src/ofxJSUtils.h</file>
+				<file>../../../addons/ofxJavascript/src/ofxJSUtils.cpp</file>
+				<file>../../../addons/ofxJavascript/src/ofxJSGlobalFunc.h</file>
+				<file>../../../addons/ofxJavascript/src/ofxJSGlobalFunc.cpp</file>
+				<file>../../../addons/ofxJavascript/src/ofxJSTrueTypeFont.h</file>
+				<file>../../../addons/ofxJavascript/src/ofxJSTrueTypeFont.cpp</file>
+				<file>../../../addons/ofxJavascript/src/ofxJSImage.h</file>
+				<file>../../../addons/ofxJavascript/src/ofxJSImage.cpp</file>
+				<file>../../../addons/ofxJavascript/src/ofxJSOpenGL.h</file>
+				<file>../../../addons/ofxJavascript/src/ofxJSOpenGL.cpp</file>
+			</folder>
+		</src>
+		
+		<include>
+			<path>../../../addons/ofxJavascript/src</path>
+			<path>../../../addons/ofxJavascript/libs/javascript/include/</path>
+		</include>
+		
+		<link>
+			<!-- Mac : 
+					+ preprocessor XP_UNIX must be defined in your project settings
+					+ add those two commands to the Targets/RunScript of the project : 
+						cp -f ../../../addons/ofxJavascript/libs/javascript/lib/osx/libnspr4.dylib "$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/libnspr4.dylib"
+						cp -f ../../../addons/ofxJavascript/libs/javascript/lib/osx/libJavascript.dylib "$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/libJavascript.dylib"						
+			-->
+			<lib os="mac" compiler="xcode">../../../addons/ofxJavascript/libs/javascript/lib/osx/libJavascript.dylib</lib>
+			<lib os="mac" compiler="xcode">../../../addons/ofxJavascript/libs/javascript/lib/osx/libnspr4.dylib</lib>
+
+			<!-- Windows 
+				+ preprocessor XP_WIN must be defined in your project settings
+				+ libJavascript.dll & nspr4.dll have to be copied at the application level for the program to run
+			-->
+			<lib os="win32" compiler="visualstudio">../../../addons/ofxJavascript/libs/javascript/lib/win32/libJavascript.lib</lib>
+			<lib os="win32" compiler="visualstudio">../../../addons/ofxJavascript/libs/javascript/lib/win32/nspr4.dll</lib>
+		</link>
+		
+	</add>
+	 
+</install>

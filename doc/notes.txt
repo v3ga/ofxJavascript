@@ -1,0 +1,164 @@
+
+
+------------------------------------------------------
+Setting Javascript in your application
+------------------------------------------------------
++ in setup(), call ofxJSInitialize()
+	
++ in exit(), call ofxJSFinalize()
+
+
+------------------------------------------------------
+Loading & evaluating a script
+------------------------------------------------------
++ See testUnitLoadAndEval.cpp
+
+1. C++ / from string
+string strScript="x = 3*2;";
+ofxJSEval(strScript);
+
+2. C++ / from file into data folder of your application
+ofxJSScript* pScript = ofxJSLoadFromData(filename, "myScriptId"); // 	"myScriptId" is used for error reporting
+if (pScript)
+	bool evalOk = ofxJSEval(pScript);
+
+3. JS  
+include("myFile.js");
+The 'include' function allows to load js files from disk and evaluate their content. This is a nice way of loading external files like libraries or plugins for example.
+
+
+------------------------------------------------------
+Representation of js variables from C++ side
+ofxJSValue
+------------------------------------------------------
++ ofxJSValue is an alias for jsval ( https://developer.mozilla.org/en/Jsval )
+
++ Spidermonkey (hence ofxJavascript) uses ofxJSValue to communicate values between C++ and Javascript. It can hold 'any' js types like number, string, boolean or object.
+
++ ofxJSValue is used : 
+	- to pass arguments when calling a js functions from C++.
+	- to hold return value from a js function call from C++.
+	- to get arguments from a js call into a C++ function.
+
++ Conversion from C++ values to ofxJSValue are made with the following macros :
+		- int_TO_ofxJSValue(v)
+		- bool_TO_ofxJSValue(v)
+		- double_TO_ofxJSValue(v)
+		- float_TO_ofxJSValue(v)
+		- string_TO_ofxJSValue(v)
+		- object_TO_ofxJSValue(v)
+		- objectp_TO_ofxJSValue(v)
+
++ Conversion from js values to C++ are made with the following macros :
+		- ofxJSValue_TO_int(v)
+		- ofxJSValue_TO_bool(v)
+		- ofxJSValue_TO_double(v)
+		- ofxJSValue_TO_float(v)
+		- ofxJSValue_TO_string(v)
+		- ofxJSValue_TO_object(t,v) // t is for type
+		- ofxJSValue_TO_objectp(t,v) // t is for type 
+
+
+------------------------------------------------------
+Calling Javascript functions from C++
+------------------------------------------------------
++ See testUnitCallFunctions.cpp
+
++ Arguments for the js functions to be called are stored in an array of ofxJSValue. C++ values (int, float, string, ...) have to be first converted into corresponding ofxJSValue (See previous macros)
+
++ Return value of the function is also stored in an ofxJSValue variable.
+
++ Once arguments are declared / filled with proper values and return value declared, a call can be made to the js function : 
+	- on the global scope with : 
+			- ofxJSCallFunctionNameGlobal_NoArgs(obj,funcName,retVal)
+			- ofxJSCallFunctionNameGlobal(funcName,args,argsNb,retVal)
+
+	- on an object scope : 
+			- ofxJSCallFunctionNameObject_NoArgs(obj,funcName,retVal)
+			- ofxJSCallFunctionNameObject(obj,funcName,args,argsNb,retVal)
+
++ Example : 
+
+1. Let's say we have a function defined like this in Javascript on global scope:
+function test(x,y,img)
+{
+	return x+y+(img!=undefined ? img.width : 0);
+}
+
+2. The call on C++ side can be made like : 
+
+int a = 12345;
+float b = 6789.12f;
+ofxJSImage myImage;
+....
+
+ofxJSValue args[3];
+args[0] = int_TO_ofxJSValue(a);
+args[1] = float_TO_ofxJSValue(b);
+args[2] = objectp_TO_ofxJSValue(&myImage);
+
+ofxJSValue retVal;
+ofxJSCallFunctionNameGlobal("test", args, 3, retVal);
+
+printf("return value is %d\n", ofxJSValue_TO_int(retVal) );
+
++ Important note : object passed as argument for a js call must have their class having javascript interface code (see "Exposing C++ classes to Javascript"), otherwise the compiler will throw out some errors.
+
+
+------------------------------------------------------
+Calling static C++ functions from Javascript
+------------------------------------------------------
++ See testUnitDefineFunctions.cpp
+
++ C++ defined functions can be called from Javascript.For example, it can be useful if a function has to perform some intense calculations that can't be made with js.
+
+1. C++ function should be declared somewhere with macro : 
+			- ofxJSDeclareFunctionCpp("cppComputeSomething");
+
+2. Then it is implemented with : 
+			- ofxJSDefineFunctionCpp("cppComputeSomething")
+			{
+					// Code to handle variables sent from js	
+					// functions must return a value
+					// JS_TRUE if everything went well, JS_FALSE otherwise (js will then spit out an error on the console)
+			}
+
+3. Tell Javascript to define the function (global scope)
+		- ofxJSDefineFunctionGlobal("cppComputeSomething", &cppComputeSomething, 2); // name, function pointer, args number
+
+
+4. "cppComputeSomething" can now be called from your script (anywhere if it was defined on the global scope)
+ 
+
+------------------------------------------------------
+Exposing C++ classes to Javascript
+------------------------------------------------------
+
++ JSGen ( http://www.cs.unm.edu/~cello/jsgen/ ) has been used to generate the js code for several classes in ofxJavascript library.
+Basically it parses a C++ header file to generate files to be included then in .h & .cpp files.
+
++ Example: 
+Look at ofxJSOpenGL.h & ofxJSOpenGL.h
+They respectively include js/ofxJSOpenGL.h & js/ofxJSOpenGL.cpp which were automatically generated by JSGen tool.
+
+The command is the following : 
+
+jsgen input_path_to_cpp_h output_path_to_cpp_js_h output_path_to_cpp_js_cpp 
+
+
+------------------------------------------------------
+Console
+------------------------------------------------------
+For the moment, the javascript console is the standard output ... ofxConsole ? 
+
+
+------------------------------------------------------
+JS Global functions defined by ofxJavascript 
+------------------------------------------------------
++ ofxJavascript declares three functions directly in C++
+			- print
+			- println
+			- include 
+
+
+
