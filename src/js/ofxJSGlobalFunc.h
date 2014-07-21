@@ -235,6 +235,9 @@ static JSBool JSFUNC_SetCircleResolution(JSContext *cx, JSObject *obj, uintN arg
 /* Function: void	SetColor				(int r, int g, int b, int a) */
 static JSBool JSFUNC_SetColor(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
 
+static JSBool JSFUNC_SetHexColor(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+
+
 /* Function: void 	SetFrameRate			(int targetRate) */
 static JSBool JSFUNC_SetFrameRate(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
 
