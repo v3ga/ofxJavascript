@@ -112,6 +112,7 @@ OFX_DEFINE_JSFUNC_1(ofxJSGlobalFunc,SetCircleResolution,int)
 OFX_DEFINE_JSFUNC_1(ofxJSGlobalFunc,SetColor,int)
 OFX_DEFINE_JSFUNC_3(ofxJSGlobalFunc,SetColor,int,int,int)
 OFX_DEFINE_JSFUNC_4(ofxJSGlobalFunc,SetColor,int,int,int,int)
+OFX_DEFINE_JSFUNC_1(ofxJSGlobalFunc,SetHexColor,int)
 //--------------------------------------------------------------
 void ofxJSGlobalFunc::Curve(float x0, float y0, float x1, float y1, float x2, float y2, float x3, float y3)
 {
@@ -122,6 +123,13 @@ void ofxJSGlobalFunc::Bezier(float x0, float y0, float x1, float y1, float x2, f
 {
 	ofBezier(x0,y0,x1,y1,x2,y2,x3,y3);
 }
+
+//--------------------------------------------------------------
+OFX_DEFINE_JSFUNC_0(ofxJSGlobalFunc,BeginShape)
+//--------------------------------------------------------------
+OFX_DEFINE_JSFUNC_0(ofxJSGlobalFunc,EndShape)
+//--------------------------------------------------------------
+OFX_DEFINE_JSFUNC_2(ofxJSGlobalFunc,Vertex,float,float)
 //--------------------------------------------------------------
 OFX_DEFINE_JSFUNC_0(ofxJSGlobalFunc,EnableAlphaBlending)
 //--------------------------------------------------------------

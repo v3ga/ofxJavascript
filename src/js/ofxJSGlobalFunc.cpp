@@ -108,6 +108,7 @@ JSFunctionSpec ofxJSGlobalFunc::_JSFunctionSpec[] = {
 	{ "SetBackgroundAuto", JSFUNC_SetBackgroundAuto, 1, 0, 0 },
 	{ "SetCircleResolution", JSFUNC_SetCircleResolution, 1, 0, 0 },
 	{ "SetColor", JSFUNC_SetColor, 1, 0, 0 },
+	{ "SetHexColor", JSFUNC_SetHexColor, 1, 0, 0 },
 	{ "SetFrameRate", JSFUNC_SetFrameRate, 1, 0, 0 },
 	{ "SetFullscreen", JSFUNC_SetFullscreen, 1, 0, 0 },
 	{ "SetLineWidth", JSFUNC_SetLineWidth, 1, 0, 0 },
@@ -1046,6 +1047,22 @@ JSBool ofxJSGlobalFunc::JSFUNC_SetColor(JSContext *cx, JSObject *obj, uintN argc
 
 	return JS_FALSE;
 }
+
+JSBool ofxJSGlobalFunc::JSFUNC_SetHexColor(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
+	ofxJSGlobalFunc *p = (ofxJSGlobalFunc*)JS_GetPrivate(cx, obj);
+	if (argc < 1) return JS_FALSE;
+	if (argc == 1) 
+	{
+		/* Function: void	SetHexColor				(int hexColor) */
+		if (JSVAL_IS_NUMBER(argv[0])) {
+			p->SetHexColor(__JSVal_TO_int(argv[0]));
+			return JS_TRUE;
+		}
+	}
+	
+	return JS_FALSE;
+}
+
 
 JSBool ofxJSGlobalFunc::JSFUNC_SetFrameRate(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
 	ofxJSGlobalFunc *p = (ofxJSGlobalFunc*)JS_GetPrivate(cx, obj);

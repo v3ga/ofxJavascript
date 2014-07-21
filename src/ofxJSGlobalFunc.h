@@ -58,10 +58,14 @@ class ofxJSGlobalFunc
 		void	SetCircleResolution		(int res);
 		void	SetColor				(int r, int g, int b);
 		void	SetColor				(int r, int g, int b, int a);
-		void	SetColor				(int hexColor);
+		void	SetColor				(int gray);
+        void	SetHexColor				(int hex);
 		void	Curve					(float x0, float y0, float x1, float y1, float x2, float y2, float x3, float y3);
 		void	Bezier					(float x0, float y0, float x1, float y1, float x2, float y2, float x3, float y3);
-
+        void    BeginShape              ();
+        void    EndShape                ();
+        void    Vertex                  (float x1, float y1);
+    
 		void	EnableAlphaBlending		();
 		void	DisableAlphaBlending	();
 
