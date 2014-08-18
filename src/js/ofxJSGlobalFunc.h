@@ -55,6 +55,12 @@ static JSFunctionSpec _JSFunctionSpec[];
 /* Function: void	Background				(float r,float g,float b) */
 static JSBool JSFUNC_Background(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
 
+static JSBool JSFUNC_BackgroundGradient(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+
+/* Function: void	BeginShape					() */
+static JSBool JSFUNC_BeginShape(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+
+
 /* Function: void	Bezier					(float x0, float y0, float x1, float y1, float x2, float y2, float x3, float y3) */
 static JSBool JSFUNC_Bezier(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
 
@@ -105,6 +111,9 @@ static JSBool JSFUNC_EnableSetupScreen(JSContext *cx, JSObject *obj, uintN argc,
 
 /* Function: void	EnableSmoothing			() */
 static JSBool JSFUNC_EnableSmoothing(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+
+/* Function: void	EndShape					() */
+static JSBool JSFUNC_EndShape(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
 
 /* Function: void	Fill					() */
 static JSBool JSFUNC_Fill(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
@@ -283,4 +292,6 @@ static JSBool JSFUNC_Translate(JSContext *cx, JSObject *obj, uintN argc, jsval *
 /* Function: void	Triangle				(float x1,float y1,float x2,float y2,float x3, float y3) */
 static JSBool JSFUNC_Triangle(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
 
+/* Function: void	Vertex				(float x,float y) */
+static JSBool JSFUNC_Vertex(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
 

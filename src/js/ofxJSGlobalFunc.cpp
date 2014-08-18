@@ -49,6 +49,8 @@ JSObject *ofxJSGlobalFunc::newJSObject(JSContext *cx) {
 ///// JavaScript Function Table
 JSFunctionSpec ofxJSGlobalFunc::_JSFunctionSpec[] = {
 	{ "Background", JSFUNC_Background, 3, 0, 0 },
+	{ "BackgroundGradient", JSFUNC_BackgroundGradient, 6, 0, 0 },
+    { "BeginShape", JSFUNC_BeginShape, 0, 0, 0 },
 	{ "Bezier", JSFUNC_Bezier, 8, 0, 0 },
 	{ "Circle", JSFUNC_Circle, 3, 0, 0 },
 	{ "Clamp", JSFUNC_Clamp, 3, 0, 0 },
@@ -66,6 +68,7 @@ JSFunctionSpec ofxJSGlobalFunc::_JSFunctionSpec[] = {
 	{ "EnableDataPath", JSFUNC_EnableDataPath, 0, 0, 0 },
 	{ "EnableSetupScreen", JSFUNC_EnableSetupScreen, 0, 0, 0 },
 	{ "EnableSmoothing", JSFUNC_EnableSmoothing, 0, 0, 0 },
+    { "EndShape", JSFUNC_EndShape, 0, 0, 0 },
 	{ "Fill", JSFUNC_Fill, 0, 0, 0 },
 	{ "GetElapsedTimeMillis", JSFUNC_GetElapsedTimeMillis, 0, 0, 0 },
 	{ "GetElapsedTimef", JSFUNC_GetElapsedTimef, 0, 0, 0 },
@@ -124,7 +127,8 @@ JSFunctionSpec ofxJSGlobalFunc::_JSFunctionSpec[] = {
 	{ "ToggleFullscreen", JSFUNC_ToggleFullscreen, 0, 0, 0 },
 	{ "Translate", JSFUNC_Translate, 3, 0, 0 },
 	{ "Triangle", JSFUNC_Triangle, 6, 0, 0 },
-	{ 0, 0, 0, 0, 0 }
+	{ "Vertex", JSFUNC_Vertex, 2, 0, 0 },
+    { 0, 0, 0, 0, 0 }
 };
 
 ///// JavaScript Function Wrappers
@@ -146,6 +150,34 @@ JSBool ofxJSGlobalFunc::JSFUNC_Background(JSContext *cx, JSObject *obj, uintN ar
 
 	return JS_FALSE;
 }
+
+JSBool ofxJSGlobalFunc::JSFUNC_BackgroundGradient(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
+	ofxJSGlobalFunc *p = (ofxJSGlobalFunc*)JS_GetPrivate(cx, obj);
+
+	if (argc == 7)
+    {
+		if (
+            JSVAL_IS_NUMBER(argv[0]) && JSVAL_IS_NUMBER(argv[1]) && JSVAL_IS_NUMBER(argv[2]) &&
+            JSVAL_IS_NUMBER(argv[3]) && JSVAL_IS_NUMBER(argv[4]) && JSVAL_IS_NUMBER(argv[5]) && JSVAL_IS_INT(argv[6])
+            ) {
+			p->BackgroundGradient(
+                          __JSVal_TO_float(argv[0]),
+                          __JSVal_TO_float(argv[1]),
+                          __JSVal_TO_float(argv[2]),
+                          __JSVal_TO_float(argv[3]),
+                          __JSVal_TO_float(argv[4]),
+                          __JSVal_TO_float(argv[5]),
+                          __JSVal_TO_int(argv[6])
+                          );
+			return JS_TRUE;
+		}
+	}
+    
+    
+	return JS_FALSE;
+}
+
+
 
 JSBool ofxJSGlobalFunc::JSFUNC_Bezier(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
 	ofxJSGlobalFunc *p = (ofxJSGlobalFunc*)JS_GetPrivate(cx, obj);
@@ -170,6 +202,20 @@ JSBool ofxJSGlobalFunc::JSFUNC_Bezier(JSContext *cx, JSObject *obj, uintN argc, 
 
 	return JS_FALSE;
 }
+
+
+JSBool ofxJSGlobalFunc::JSFUNC_BeginShape(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
+	ofxJSGlobalFunc *p = (ofxJSGlobalFunc*)JS_GetPrivate(cx, obj);
+	if (argc == 0) {
+		/* Function: void	BeginShape	() */
+        p->BeginShape();
+        return JS_TRUE;
+	}
+    
+    
+	return JS_FALSE;
+}
+
 
 JSBool ofxJSGlobalFunc::JSFUNC_Circle(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
 	ofxJSGlobalFunc *p = (ofxJSGlobalFunc*)JS_GetPrivate(cx, obj);
@@ -422,6 +468,21 @@ JSBool ofxJSGlobalFunc::JSFUNC_EnableSmoothing(JSContext *cx, JSObject *obj, uin
 
 	return JS_FALSE;
 }
+
+
+JSBool ofxJSGlobalFunc::JSFUNC_EndShape(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
+	ofxJSGlobalFunc *p = (ofxJSGlobalFunc*)JS_GetPrivate(cx, obj);
+	if (argc == 0) {
+		/* Function: void	EndShape	() */
+        p->EndShape();
+        return JS_TRUE;
+	}
+    
+    
+	return JS_FALSE;
+}
+
+
 
 JSBool ofxJSGlobalFunc::JSFUNC_Fill(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
 	ofxJSGlobalFunc *p = (ofxJSGlobalFunc*)JS_GetPrivate(cx, obj);
@@ -1300,6 +1361,25 @@ JSBool ofxJSGlobalFunc::JSFUNC_Triangle(JSContext *cx, JSObject *obj, uintN argc
 	}
 
 
+	return JS_FALSE;
+}
+
+JSBool ofxJSGlobalFunc::JSFUNC_Vertex(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
+	ofxJSGlobalFunc *p = (ofxJSGlobalFunc*)JS_GetPrivate(cx, obj);
+	if (argc < 2) return JS_FALSE;
+	if (argc == 2) {
+		/* Function: void	Vertex				(float x,float y) */
+		if (JSVAL_IS_NUMBER(argv[0]) && JSVAL_IS_NUMBER(argv[1]) ) {
+			p->Vertex(
+                        __JSVal_TO_float(argv[0]),
+                        __JSVal_TO_float(argv[1])
+                    
+                        );
+			return JS_TRUE;
+		}
+	}
+    
+    
 	return JS_FALSE;
 }
 
