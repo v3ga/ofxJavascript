@@ -130,9 +130,26 @@ OFX_DEFINE_JSFUNC_0(ofxJSGlobalFunc,BeginShape)
 OFX_DEFINE_JSFUNC_0(ofxJSGlobalFunc,EndShape)
 //--------------------------------------------------------------
 OFX_DEFINE_JSFUNC_2(ofxJSGlobalFunc,Vertex,float,float)
+/*
+ void ofxJSGlobalFunc::Vertex(float x, float y)
+ {
+    ofVertex(x,y);
+ }
+ */
+
+//--------------------------------------------------------------
+void ofxJSGlobalFunc::BackgroundGradient(float r1, float g1, float b1, float r2, float g2, float b2, int mode)
+{
+    ofColor colorOne(r1,g1,b1);
+    ofColor colorTwo(r2,g2,b2);
+    
+	ofBackgroundGradient(colorOne, colorTwo, (ofGradientMode)mode);
+}
+
 //--------------------------------------------------------------
 OFX_DEFINE_JSFUNC_0(ofxJSGlobalFunc,EnableAlphaBlending)
 //--------------------------------------------------------------
+
 OFX_DEFINE_JSFUNC_0(ofxJSGlobalFunc,DisableAlphaBlending)
 //--------------------------------------------------------------
 OFX_DEFINE_JSFUNC_0(ofxJSGlobalFunc,EnableSmoothing)

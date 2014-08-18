@@ -66,6 +66,21 @@ class ofxJSGlobalFunc
         void    EndShape                ();
         void    Vertex                  (float x1, float y1);
     
+    /*
+     fonctions de dessin ajoutées par Valère le 18/08/14
+     */
+    
+    
+        //void    Arc                     (float a, float b, float c, float d, float start, float stop);
+//        void    Quad                    (float x1 , float y1, float x2, float y2, float x3, float y3, float x4, float y4);
+//        void    noStroke                ();
+//        void    strokeWeight            (float weight);
+        void    BackgroundGradient      (float r1, float g1, float b1, float r2, float g2, float b2, int mode);
+       
+    /*
+     fonctions de dessin ajoutées par Valère le 18/08/14
+     */
+
 		void	EnableAlphaBlending		();
 		void	DisableAlphaBlending	();
 
