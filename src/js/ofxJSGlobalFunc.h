@@ -97,6 +97,24 @@ static JSBool JSFUNC_DistSquared(JSContext *cx, JSObject *obj, uintN argc, jsval
 /* Function: void	DrawBitmapString		(string textString, float x, float y) */
 static JSBool JSFUNC_DrawBitmapString(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
 
+/* Function: void	DrawBox		(float x, float y, float z, float width, float height, float depth) */
+static JSBool JSFUNC_DrawBox(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+
+/* Function: void	DrawCone     (float x, float y, float z, float radius, float height) */
+static JSBool JSFUNC_DrawCone(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+
+/* Function: void	DrawCylinder    (float x, float y, float radius, float height) */
+static JSBool JSFUNC_DrawCylinder(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+
+/* Function: void	DrawIcoSphere   (float x, float y, float z, float radius) */
+static JSBool JSFUNC_DrawIcoSphere(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+
+/* Function: void	DrawPlane(float x, float y, float width, float height) */
+static JSBool JSFUNC_DrawPlane(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+
+/* Function: void	DrawSphere(float x, float y, float radius) */
+static JSBool JSFUNC_DrawSphere(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+
 /* Function: void	Ellipse					(float x, float y, float width, float height) */
 static JSBool JSFUNC_Ellipse(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
 
@@ -174,6 +192,10 @@ static JSBool JSFUNC_Line(JSContext *cx, JSObject *obj, uintN argc, jsval *argv,
 
 /* Function: float	Map						(float value, float inputMin, float inputMax, float outputMin, float outputMax) */
 static JSBool JSFUNC_Map(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+
+/* Function: void 	NextContour			(bool bSync) */
+static JSBool JSFUNC_NextContour(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+
 
 /* Function: void	NoFill					() */
 static JSBool JSFUNC_NoFill(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
@@ -255,6 +277,9 @@ static JSBool JSFUNC_SetFullscreen(JSContext *cx, JSObject *obj, uintN argc, jsv
 
 /* Function: void	SetLineWidth			(float lineWidth) */
 static JSBool JSFUNC_SetLineWidth(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+
+/* Function: int		SetPolyMode	() */
+static JSBool JSFUNC_SetPolyMode(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
 
 /* Function: void 	SetRectMode				(int mode) */
 static JSBool JSFUNC_SetRectMode(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
