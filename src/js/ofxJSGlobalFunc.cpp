@@ -63,6 +63,12 @@ JSFunctionSpec ofxJSGlobalFunc::_JSFunctionSpec[] = {
 	{ "Dist", JSFUNC_Dist, 4, 0, 0 },
 	{ "DistSquared", JSFUNC_DistSquared, 4, 0, 0 },
 	{ "DrawBitmapString", JSFUNC_DrawBitmapString, 3, 0, 0 },
+    { "DrawBox", JSFUNC_DrawBox, 6, 0, 0 },
+    { "DrawCone", JSFUNC_DrawCone, 5, 0, 0 },
+    { "DrawCylinder", JSFUNC_DrawCylinder, 4, 0, 0 },
+    { "DrawIcoSphere", JSFUNC_DrawIcoSphere, 4, 0, 0 },
+    { "DrawPlane", JSFUNC_DrawPlane, 4, 0, 0 },
+    { "DrawSphere", JSFUNC_DrawSphere, 3, 0, 0 },
 	{ "Ellipse", JSFUNC_Ellipse, 4, 0, 0 },
 	{ "EnableAlphaBlending", JSFUNC_EnableAlphaBlending, 0, 0, 0 },
 	{ "EnableDataPath", JSFUNC_EnableDataPath, 0, 0, 0 },
@@ -89,6 +95,7 @@ JSFunctionSpec ofxJSGlobalFunc::_JSFunctionSpec[] = {
 	{ "Lerp", JSFUNC_Lerp, 3, 0, 0 },
 	{ "Line", JSFUNC_Line, 4, 0, 0 },
 	{ "Map", JSFUNC_Map, 5, 0, 0 },
+    { "NextContour", JSFUNC_NextContour, 1, 0, 0 },
 	{ "NoFill", JSFUNC_NoFill, 0, 0, 0 },
 	{ "Normalize", JSFUNC_Normalize, 3, 0, 0 },
 	{ "PopMatrix", JSFUNC_PopMatrix, 0, 0, 0 },
@@ -115,6 +122,7 @@ JSFunctionSpec ofxJSGlobalFunc::_JSFunctionSpec[] = {
 	{ "SetFrameRate", JSFUNC_SetFrameRate, 1, 0, 0 },
 	{ "SetFullscreen", JSFUNC_SetFullscreen, 1, 0, 0 },
 	{ "SetLineWidth", JSFUNC_SetLineWidth, 1, 0, 0 },
+    { "SetPolyMode", JSFUNC_SetPolyMode, 1, 0, 0 },
 	{ "SetRectMode", JSFUNC_SetRectMode, 1, 0, 0 },
 	{ "SetVerticalSync", JSFUNC_SetVerticalSync, 1, 0, 0 },
 	{ "SetWindowPosition", JSFUNC_SetWindowPosition, 2, 0, 0 },
@@ -400,6 +408,137 @@ JSBool ofxJSGlobalFunc::JSFUNC_DrawBitmapString(JSContext *cx, JSObject *obj, ui
 
 	return JS_FALSE;
 }
+
+JSBool ofxJSGlobalFunc::JSFUNC_DrawBox(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
+	ofxJSGlobalFunc *p = (ofxJSGlobalFunc*)JS_GetPrivate(cx, obj);
+	if (argc < 6) return JS_FALSE;
+	if (argc == 6) {
+		/* Function: void	DrawBox					(float x, float y, float z, float width, float height, float depth) */
+		if (JSVAL_IS_NUMBER(argv[0]) && JSVAL_IS_NUMBER(argv[1]) && JSVAL_IS_NUMBER(argv[2]) && JSVAL_IS_NUMBER(argv[3]) && JSVAL_IS_NUMBER(argv[4]) && JSVAL_IS_NUMBER(argv[5])) {
+			p->DrawBox(
+                       __JSVal_TO_float(argv[0]),
+                       __JSVal_TO_float(argv[1]),
+                       __JSVal_TO_float(argv[2]),
+                       __JSVal_TO_float(argv[3]),
+                       __JSVal_TO_float(argv[4]),
+                       __JSVal_TO_float(argv[5])
+                       );
+			return JS_TRUE;
+		}
+	}
+    
+    
+	return JS_FALSE;
+}
+
+
+JSBool ofxJSGlobalFunc::JSFUNC_DrawCone(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
+	ofxJSGlobalFunc *p = (ofxJSGlobalFunc*)JS_GetPrivate(cx, obj);
+	if (argc < 5) return JS_FALSE;
+	if (argc == 5) {
+		/* Function: void	DrawCone     (float x, float y, float z, float radius, float height) */
+		if (JSVAL_IS_NUMBER(argv[0]) && JSVAL_IS_NUMBER(argv[1]) && JSVAL_IS_NUMBER(argv[2]) && JSVAL_IS_NUMBER(argv[3]) && JSVAL_IS_NUMBER(argv[4])) {
+			p->DrawCone(
+                       __JSVal_TO_float(argv[0]),
+                       __JSVal_TO_float(argv[1]),
+                       __JSVal_TO_float(argv[2]),
+                       __JSVal_TO_float(argv[3]),
+                       __JSVal_TO_float(argv[4])
+                       );
+			return JS_TRUE;
+		}
+	}
+    
+    
+	return JS_FALSE;
+}
+
+
+JSBool ofxJSGlobalFunc::JSFUNC_DrawCylinder(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
+	ofxJSGlobalFunc *p = (ofxJSGlobalFunc*)JS_GetPrivate(cx, obj);
+	if (argc < 4) return JS_FALSE;
+	if (argc == 4) {
+		/* Function: void	DrawCylinder    (float x, float y, float radius, float height) */
+		if (JSVAL_IS_NUMBER(argv[0]) && JSVAL_IS_NUMBER(argv[1]) && JSVAL_IS_NUMBER(argv[2]) && JSVAL_IS_NUMBER(argv[3]) ) {
+			p->DrawCylinder(
+                        __JSVal_TO_float(argv[0]),
+                        __JSVal_TO_float(argv[1]),
+                        __JSVal_TO_float(argv[2]),
+                        __JSVal_TO_float(argv[3])
+                        );
+			return JS_TRUE;
+		}
+	}
+    
+    
+	return JS_FALSE;
+}
+
+
+JSBool ofxJSGlobalFunc::JSFUNC_DrawIcoSphere(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
+	ofxJSGlobalFunc *p = (ofxJSGlobalFunc*)JS_GetPrivate(cx, obj);
+	if (argc < 4) return JS_FALSE;
+	if (argc == 4) {
+		/* Function: void	DrawIcoSphere   (float x, float y, float z, float radius) */
+		if (JSVAL_IS_NUMBER(argv[0]) && JSVAL_IS_NUMBER(argv[1]) && JSVAL_IS_NUMBER(argv[2]) && JSVAL_IS_NUMBER(argv[3]) ) {
+			p->DrawIcoSphere(
+                            __JSVal_TO_float(argv[0]),
+                            __JSVal_TO_float(argv[1]),
+                            __JSVal_TO_float(argv[2]),
+                            __JSVal_TO_float(argv[3])
+                            );
+			return JS_TRUE;
+		}
+	}
+    
+    
+	return JS_FALSE;
+}
+
+
+JSBool ofxJSGlobalFunc::JSFUNC_DrawPlane(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
+	ofxJSGlobalFunc *p = (ofxJSGlobalFunc*)JS_GetPrivate(cx, obj);
+	if (argc < 4) return JS_FALSE;
+	if (argc == 4) {
+		/* Function: void	DrawPlane(float x, float y, float width, float height) */
+		if (JSVAL_IS_NUMBER(argv[0]) && JSVAL_IS_NUMBER(argv[1]) && JSVAL_IS_NUMBER(argv[2]) && JSVAL_IS_NUMBER(argv[3]) ) {
+			p->DrawPlane(
+                             __JSVal_TO_float(argv[0]),
+                             __JSVal_TO_float(argv[1]),
+                             __JSVal_TO_float(argv[2]),
+                             __JSVal_TO_float(argv[3])
+                             );
+			return JS_TRUE;
+		}
+	}
+    
+    
+	return JS_FALSE;
+}
+
+
+
+JSBool ofxJSGlobalFunc::JSFUNC_DrawSphere(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
+	ofxJSGlobalFunc *p = (ofxJSGlobalFunc*)JS_GetPrivate(cx, obj);
+	if (argc < 3) return JS_FALSE;
+	if (argc == 3) {
+		/* Function: void	DrawSphere(float x, float y, float radius) */
+		if (JSVAL_IS_NUMBER(argv[0]) && JSVAL_IS_NUMBER(argv[1]) && JSVAL_IS_NUMBER(argv[2])  ) {
+			p->DrawSphere(
+                         __JSVal_TO_float(argv[0]),
+                         __JSVal_TO_float(argv[1]),
+                         __JSVal_TO_float(argv[2])
+                         );
+			return JS_TRUE;
+		}
+	}
+    
+    
+	return JS_FALSE;
+}
+
+
+
 
 JSBool ofxJSGlobalFunc::JSFUNC_Ellipse(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
 	ofxJSGlobalFunc *p = (ofxJSGlobalFunc*)JS_GetPrivate(cx, obj);
@@ -754,6 +893,23 @@ JSBool ofxJSGlobalFunc::JSFUNC_Map(JSContext *cx, JSObject *obj, uintN argc, jsv
 
 	return JS_FALSE;
 }
+
+
+JSBool ofxJSGlobalFunc::JSFUNC_NextContour(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
+	ofxJSGlobalFunc *p = (ofxJSGlobalFunc*)JS_GetPrivate(cx, obj);
+	if (argc < 1) return JS_FALSE;
+	if (argc == 1) {
+		/* Function: void 	NextContour			(bool bSync) */
+		if (JSVAL_IS_BOOLEAN(argv[0])) {
+			p->NextContour(__JSVal_TO_bool(argv[0]));
+			return JS_TRUE;
+		}
+	}
+    
+    
+	return JS_FALSE;
+}
+
 
 JSBool ofxJSGlobalFunc::JSFUNC_NoFill(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
 	ofxJSGlobalFunc *p = (ofxJSGlobalFunc*)JS_GetPrivate(cx, obj);
@@ -1169,6 +1325,28 @@ JSBool ofxJSGlobalFunc::JSFUNC_SetLineWidth(JSContext *cx, JSObject *obj, uintN 
 
 	return JS_FALSE;
 }
+
+
+JSBool ofxJSGlobalFunc::JSFUNC_SetPolyMode(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
+    ofxJSGlobalFunc *p = (ofxJSGlobalFunc*)JS_GetPrivate(cx, obj);
+	if (argc < 1) return JS_FALSE;
+	if (argc == 1) {
+		if (JSVAL_IS_NUMBER(argv[0])) {
+            
+			p->SetPolyMode(__JSVal_TO_int(argv[0])
+                          
+            
+                           );
+			return JS_TRUE;		}
+	}
+    
+    
+	return JS_FALSE;
+}
+
+
+
+
 
 JSBool ofxJSGlobalFunc::JSFUNC_SetRectMode(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
 /*

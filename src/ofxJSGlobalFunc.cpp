@@ -130,12 +130,6 @@ OFX_DEFINE_JSFUNC_0(ofxJSGlobalFunc,BeginShape)
 OFX_DEFINE_JSFUNC_0(ofxJSGlobalFunc,EndShape)
 //--------------------------------------------------------------
 OFX_DEFINE_JSFUNC_2(ofxJSGlobalFunc,Vertex,float,float)
-/*
- void ofxJSGlobalFunc::Vertex(float x, float y)
- {
-    ofVertex(x,y);
- }
- */
 
 //--------------------------------------------------------------
 void ofxJSGlobalFunc::BackgroundGradient(float r1, float g1, float b1, float r2, float g2, float b2, int mode)
@@ -239,3 +233,25 @@ OFX_DEFINE_JSFUNC_3(ofxJSGlobalFunc,DrawBitmapString,string,float,float)
 OFX_DEFINE_JSFUNC_1(ofxJSGlobalFunc,SaveScreen,string)
 //--------------------------------------------------------------
 OFX_DEFINE_JSFUNC_0(ofxJSGlobalFunc,SaveFrame)
+//--------------------------------------------------------------
+void ofxJSGlobalFunc::SetPolyMode(int mode)
+{
+	ofSetPolyMode((ofPolyWindingMode)mode);
+}
+//--------------------------------------------------------------
+OFX_DEFINE_JSFUNC_1(ofxJSGlobalFunc,NextContour, bool)
+//--------------------------------------------------------------
+OFX_DEFINE_JSFUNC_6(ofxJSGlobalFunc,DrawBox, float, float, float, float, float, float)
+//--------------------------------------------------------------
+OFX_DEFINE_JSFUNC_5(ofxJSGlobalFunc,DrawCone, float, float, float, float, float)
+//--------------------------------------------------------------
+OFX_DEFINE_JSFUNC_4(ofxJSGlobalFunc,DrawCylinder, float, float, float, float)
+//--------------------------------------------------------------
+OFX_DEFINE_JSFUNC_4(ofxJSGlobalFunc,DrawIcoSphere, float, float, float, float)
+//--------------------------------------------------------------
+OFX_DEFINE_JSFUNC_4(ofxJSGlobalFunc,DrawPlane, float, float, float, float)
+//--------------------------------------------------------------
+OFX_DEFINE_JSFUNC_3(ofxJSGlobalFunc,DrawSphere, float, float, float)
+
+
+
