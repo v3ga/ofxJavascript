@@ -6,8 +6,8 @@
 //
 //
 
-#ifndef OFX_JSUTILS_H
-#define OFX_JSUTILS_H
+#ifndef OFX_JSLIGHT_H
+#define OFX_JSLIGHT_H
 
 #include "ofxJavascript.h"
 
