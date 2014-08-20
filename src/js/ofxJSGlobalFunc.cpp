@@ -58,6 +58,8 @@ JSFunctionSpec ofxJSGlobalFunc::_JSFunctionSpec[] = {
 	{ "DegToRad", JSFUNC_DegToRad, 1, 0, 0 },
 	{ "DisableAlphaBlending", JSFUNC_DisableAlphaBlending, 0, 0, 0 },
 	{ "DisableDataPath", JSFUNC_DisableDataPath, 0, 0, 0 },
+    { "DisableLighting", JSFUNC_DisableLighting, 0, 0, 0 },
+    { "DisableSeparateSpecularLight", JSFUNC_DisableSeparateSpecularLight, 0, 0, 0 },
 	{ "DisableSetupScreen", JSFUNC_DisableSetupScreen, 0, 0, 0 },
 	{ "DisableSmoothing", JSFUNC_DisableSmoothing, 0, 0, 0 },
 	{ "Dist", JSFUNC_Dist, 4, 0, 0 },
@@ -72,6 +74,8 @@ JSFunctionSpec ofxJSGlobalFunc::_JSFunctionSpec[] = {
 	{ "Ellipse", JSFUNC_Ellipse, 4, 0, 0 },
 	{ "EnableAlphaBlending", JSFUNC_EnableAlphaBlending, 0, 0, 0 },
 	{ "EnableDataPath", JSFUNC_EnableDataPath, 0, 0, 0 },
+    { "EnableLighting", JSFUNC_EnableLighting, 0, 0, 0 },
+    { "EnableSeparateSpecularLight", JSFUNC_EnableSeparateSpecularLight, 0, 0, 0 },
 	{ "EnableSetupScreen", JSFUNC_EnableSetupScreen, 0, 0, 0 },
 	{ "EnableSmoothing", JSFUNC_EnableSmoothing, 0, 0, 0 },
     { "EndShape", JSFUNC_EndShape, 0, 0, 0 },
@@ -82,6 +86,7 @@ JSFunctionSpec ofxJSGlobalFunc::_JSFunctionSpec[] = {
 	{ "GetFrameRate", JSFUNC_GetFrameRate, 0, 0, 0 },
 	{ "GetHeight", JSFUNC_GetHeight, 0, 0, 0 },
 	{ "GetHours", JSFUNC_GetHours, 0, 0, 0 },
+    { "GetLightingEnabled", JSFUNC_GetLightingEnabled, 0, 0, 0 },
 	{ "GetMinutes", JSFUNC_GetMinutes, 0, 0, 0 },
 	{ "GetScreenHeight", JSFUNC_GetScreenHeight, 0, 0, 0 },
 	{ "GetScreenWidth", JSFUNC_GetScreenWidth, 0, 0, 0 },
@@ -124,6 +129,7 @@ JSFunctionSpec ofxJSGlobalFunc::_JSFunctionSpec[] = {
 	{ "SetLineWidth", JSFUNC_SetLineWidth, 1, 0, 0 },
     { "SetPolyMode", JSFUNC_SetPolyMode, 1, 0, 0 },
 	{ "SetRectMode", JSFUNC_SetRectMode, 1, 0, 0 },
+    { "SetSmoothLighting", JSFUNC_SetSmoothLighting, 1, 0, 0 },
 	{ "SetVerticalSync", JSFUNC_SetVerticalSync, 1, 0, 0 },
 	{ "SetWindowPosition", JSFUNC_SetWindowPosition, 2, 0, 0 },
 	{ "SetWindowShape", JSFUNC_SetWindowShape, 2, 0, 0 },
@@ -326,6 +332,22 @@ JSBool ofxJSGlobalFunc::JSFUNC_DisableDataPath(JSContext *cx, JSObject *obj, uin
 	return JS_FALSE;
 }
 
+
+JSBool ofxJSGlobalFunc::JSFUNC_DisableLighting(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
+	ofxJSGlobalFunc *p = (ofxJSGlobalFunc*)JS_GetPrivate(cx, obj);
+	if (argc == 0) {
+		/* Function: void	DisableLighting			() */
+        p->DisableLighting();
+        return JS_TRUE;
+	}
+    
+    
+	return JS_FALSE;
+}
+
+
+
+
 JSBool ofxJSGlobalFunc::JSFUNC_DisableSetupScreen(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
 	ofxJSGlobalFunc *p = (ofxJSGlobalFunc*)JS_GetPrivate(cx, obj);
 	if (argc == 0) {
@@ -349,6 +371,22 @@ JSBool ofxJSGlobalFunc::JSFUNC_DisableSmoothing(JSContext *cx, JSObject *obj, ui
 
 	return JS_FALSE;
 }
+
+
+
+JSBool ofxJSGlobalFunc::JSFUNC_DisableSeparateSpecularLight(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
+	ofxJSGlobalFunc *p = (ofxJSGlobalFunc*)JS_GetPrivate(cx, obj);
+	if (argc == 0) {
+		/* Function: void	DisableSeparateSpecularLight		() */
+        p->DisableSeparateSpecularLight();
+        return JS_TRUE;
+	}
+    
+    
+	return JS_FALSE;
+}
+
+
 
 JSBool ofxJSGlobalFunc::JSFUNC_Dist(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
 	ofxJSGlobalFunc *p = (ofxJSGlobalFunc*)JS_GetPrivate(cx, obj);
@@ -584,6 +622,21 @@ JSBool ofxJSGlobalFunc::JSFUNC_EnableDataPath(JSContext *cx, JSObject *obj, uint
 	return JS_FALSE;
 }
 
+
+JSBool ofxJSGlobalFunc::JSFUNC_EnableLighting(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
+	ofxJSGlobalFunc *p = (ofxJSGlobalFunc*)JS_GetPrivate(cx, obj);
+	if (argc == 0) {
+		/* Function: void	EnableLighting			() */
+        p->EnableLighting();
+        return JS_TRUE;
+	}
+    
+    
+	return JS_FALSE;
+}
+
+
+
 JSBool ofxJSGlobalFunc::JSFUNC_EnableSetupScreen(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
 	ofxJSGlobalFunc *p = (ofxJSGlobalFunc*)JS_GetPrivate(cx, obj);
 	if (argc == 0) {
@@ -596,17 +649,33 @@ JSBool ofxJSGlobalFunc::JSFUNC_EnableSetupScreen(JSContext *cx, JSObject *obj, u
 	return JS_FALSE;
 }
 
+
+JSBool ofxJSGlobalFunc::JSFUNC_EnableSeparateSpecularLight(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
+	ofxJSGlobalFunc *p = (ofxJSGlobalFunc*)JS_GetPrivate(cx, obj);
+	if (argc == 0) {
+		/* Function: void	EnableSeparateSpecularLight			() */
+        p->EnableSeparateSpecularLight();
+        return JS_TRUE;
+	}
+    
+    
+	return JS_FALSE;
+}
+
+
 JSBool ofxJSGlobalFunc::JSFUNC_EnableSmoothing(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
 	ofxJSGlobalFunc *p = (ofxJSGlobalFunc*)JS_GetPrivate(cx, obj);
 	if (argc == 0) {
 		/* Function: void	EnableSmoothing			() */
-			p->EnableSmoothing();
-			return JS_TRUE;
+        p->EnableSmoothing();
+        return JS_TRUE;
 	}
-
-
+    
+    
 	return JS_FALSE;
 }
+
+
 
 
 JSBool ofxJSGlobalFunc::JSFUNC_EndShape(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
@@ -706,6 +775,22 @@ JSBool ofxJSGlobalFunc::JSFUNC_GetHours(JSContext *cx, JSObject *obj, uintN argc
 
 	return JS_FALSE;
 }
+
+
+JSBool ofxJSGlobalFunc::JSFUNC_GetLightingEnabled(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
+	ofxJSGlobalFunc *p = (ofxJSGlobalFunc*)JS_GetPrivate(cx, obj);
+	if (argc == 0) {
+		/* Function: bool	GetLightingEnabled					() */
+			*rval = __bool_TO_JSVal(cx,p->GetLightingEnabled());
+			return JS_TRUE;
+		}
+	
+    
+    
+	return JS_FALSE;
+}
+
+
 
 JSBool ofxJSGlobalFunc::JSFUNC_GetMinutes(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
 	ofxJSGlobalFunc *p = (ofxJSGlobalFunc*)JS_GetPrivate(cx, obj);
@@ -1338,6 +1423,23 @@ JSBool ofxJSGlobalFunc::JSFUNC_SetPolyMode(JSContext *cx, JSObject *obj, uintN a
             
                            );
 			return JS_TRUE;		}
+	}
+    
+    
+	return JS_FALSE;
+}
+
+
+
+JSBool ofxJSGlobalFunc::JSFUNC_SetSmoothLighting(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
+    ofxJSGlobalFunc *p = (ofxJSGlobalFunc*)JS_GetPrivate(cx, obj);
+	if (argc < 1) return JS_FALSE;
+	if (argc == 1) {
+        /* Function: void SetSmoothLighting                  (bool b) */
+		if (JSVAL_IS_NUMBER(argv[0])) {
+            p->SetSmoothLighting(__JSVal_TO_int(argv[0]));
+			return JS_TRUE;
+        }
 	}
     
     

@@ -67,3 +67,21 @@ static JSBool JSFUNC_enable(JSContext *cx, JSObject *obj, uintN argc, jsval *arg
 static JSBool JSFUNC_getLightID(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
 
 
+/* Function: int							setAmbientColor		(float r, float g, float b) */
+static JSBool JSFUNC_setAmbientColor(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+
+/* Function: int							setDiffuseColor		(float r, float g, float b) */
+static JSBool JSFUNC_setDiffuseColor(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+
+/* Function: void						setDirectional			() */
+static JSBool JSFUNC_setDirectional(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+
+/* Function: void						setPointLight			() */
+static JSBool JSFUNC_setPointLight(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+
+/* Function: int							setSpecularColor		(float r, float g, float b) */
+static JSBool JSFUNC_setSpecularColor(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+
+/* Function: int							setSpotlight(float spotCutOff=45.f, float exponent=0.f) */
+static JSBool JSFUNC_setSpotlight(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+

@@ -67,7 +67,14 @@ JSFunctionSpec ofxJSLight::_JSFunctionSpec[] = {
 	{ "disable", JSFUNC_disable, 0, 0, 0 },
 	{ "enable", JSFUNC_enable, 0, 0, 0 },
 	{ "getLightID", JSFUNC_getLightID, 0, 0, 0 },
+    { "setAmbientColor", JSFUNC_setAmbientColor, 3, 0, 0 },
+    { "setDiffuseColor", JSFUNC_setDiffuseColor, 3, 0, 0 },
+    { "setDirectional", JSFUNC_setDirectional, 0, 0, 0 },
+    { "setPointLight", JSFUNC_setPointLight, 0, 0, 0 },
+    { "setSpecularColor", JSFUNC_setSpecularColor, 3, 0, 0 },
+    { "setSpotlight", JSFUNC_setSpotlight, 2, 0, 0 },
 	{ 0, 0, 0, 0, 0 }
+    
 };
 
 ///// JavaScript Function Wrappers
@@ -120,3 +127,107 @@ JSBool ofxJSLight::JSFUNC_getLightID(JSContext *cx, JSObject *obj, uintN argc, j
 }
 
 
+JSBool ofxJSLight::JSFUNC_setAmbientColor(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
+	ofxJSLight *p = (ofxJSLight*)JS_GetPrivate(cx, obj);
+	if (argc == 3) {
+		/* Function: int							getLightID		() */
+		if (JSVAL_IS_NUMBER(argv[0]) && JSVAL_IS_NUMBER(argv[1]) && JSVAL_IS_NUMBER(argv[2])) {
+
+            p->setAmbientColor(
+                               __JSVal_TO_float(argv[0]),
+                               __JSVal_TO_float(argv[1]),
+                               __JSVal_TO_float(argv[2])
+            );
+        
+        return JS_TRUE;
+	}
+    
+    
+	return JS_FALSE;
+}
+}
+
+
+JSBool ofxJSLight::JSFUNC_setDiffuseColor(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
+	ofxJSLight *p = (ofxJSLight*)JS_GetPrivate(cx, obj);
+	if (argc == 3) {
+		/* Function: int							getLightID		() */
+		if (JSVAL_IS_NUMBER(argv[0]) && JSVAL_IS_NUMBER(argv[1]) && JSVAL_IS_NUMBER(argv[2])) {
+            
+            p->setDiffuseColor(
+                               __JSVal_TO_float(argv[0]),
+                               __JSVal_TO_float(argv[1]),
+                               __JSVal_TO_float(argv[2])
+                               );
+            
+            return JS_TRUE;
+        }
+        
+        
+        return JS_FALSE;
+    }
+}
+
+
+JSBool ofxJSLight::JSFUNC_setDirectional(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
+	ofxJSLight *p = (ofxJSLight*)JS_GetPrivate(cx, obj);
+	if (argc == 0) {
+		/* Function: void						disable			() */
+        p->setDirectional();
+        return JS_TRUE;
+	}
+    
+    
+	return JS_FALSE;
+}
+
+JSBool ofxJSLight::JSFUNC_setPointLight(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
+	ofxJSLight *p = (ofxJSLight*)JS_GetPrivate(cx, obj);
+	if (argc == 0) {
+		/* Function: void						setPointLight		() */
+        p->setPointLight();
+        return JS_TRUE;
+	}
+    
+    
+	return JS_FALSE;
+}
+
+JSBool ofxJSLight::JSFUNC_setSpecularColor(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
+	ofxJSLight *p = (ofxJSLight*)JS_GetPrivate(cx, obj);
+	if (argc == 3) {
+		/* Function: int							setSpecularColor		() */
+		if (JSVAL_IS_NUMBER(argv[0]) && JSVAL_IS_NUMBER(argv[1]) && JSVAL_IS_NUMBER(argv[2])) {
+            
+            p->setSpecularColor(
+                               __JSVal_TO_float(argv[0]),
+                               __JSVal_TO_float(argv[1]),
+                               __JSVal_TO_float(argv[2])
+                               );
+            
+            return JS_TRUE;
+        }
+        
+        
+        return JS_FALSE;
+    }
+}
+
+JSBool ofxJSLight::JSFUNC_setSpotlight(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
+	ofxJSLight *p = (ofxJSLight*)JS_GetPrivate(cx, obj);
+	if (argc == 2) {
+		/* Function: int							setSpotlight		(float spotCutOff=45.f, float exponent=0.f) */
+		if (JSVAL_IS_NUMBER(argv[0]) && JSVAL_IS_NUMBER(argv[1])) {
+            
+            p->setSpotlight(
+                                __JSVal_TO_float(argv[0]),
+                                __JSVal_TO_float(argv[1])
+                                );
+            
+            return JS_TRUE;
+        }
+        
+        
+        return JS_FALSE;
+    }
+}
