@@ -14,6 +14,7 @@
 #include "ofxJSTrueTypeFont.h"
 #include "ofxJSImage.h"
 #include "ofxJSOpenGL.h"
+#include "ofxJSLight.h"
 
 class ofxJSScript;
 class ofxJavascript
