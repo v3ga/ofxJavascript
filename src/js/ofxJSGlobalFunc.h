@@ -82,6 +82,13 @@ static JSBool JSFUNC_DisableAlphaBlending(JSContext *cx, JSObject *obj, uintN ar
 /* Function: void	DisableDataPath			() */
 static JSBool JSFUNC_DisableDataPath(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
 
+/* Function: void	DisableLighting			() */
+static JSBool JSFUNC_DisableLighting(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+
+/* Function: void	DisableSeparateSpecularLight			() */
+static JSBool JSFUNC_DisableSeparateSpecularLight(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+
+
 /* Function: void	DisableSetupScreen		() */
 static JSBool JSFUNC_DisableSetupScreen(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
 
@@ -124,6 +131,12 @@ static JSBool JSFUNC_EnableAlphaBlending(JSContext *cx, JSObject *obj, uintN arg
 /* Function: void	EnableDataPath			() */
 static JSBool JSFUNC_EnableDataPath(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
 
+/* Function: void	EnableLighting			() */
+static JSBool JSFUNC_EnableLighting(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+
+/* Function: void	EnableSeparateSpecularLight			() */
+static JSBool JSFUNC_EnableSeparateSpecularLight(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+
 /* Function: void	EnableSetupScreen		() */
 static JSBool JSFUNC_EnableSetupScreen(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
 
@@ -156,6 +169,9 @@ static JSBool JSFUNC_GetHours(JSContext *cx, JSObject *obj, uintN argc, jsval *a
 
 /* Function: int		GetMinutes				() */
 static JSBool JSFUNC_GetMinutes(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+
+/* Function: bool	GetLightingEnabled					() */
+static JSBool JSFUNC_GetLightingEnabled(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
 
 /* Function: int 	GetScreenHeight			() */
 static JSBool JSFUNC_GetScreenHeight(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
@@ -283,6 +299,9 @@ static JSBool JSFUNC_SetPolyMode(JSContext *cx, JSObject *obj, uintN argc, jsval
 
 /* Function: void 	SetRectMode				(int mode) */
 static JSBool JSFUNC_SetRectMode(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+
+/* Function: void 	SetSmoothLighting  				(bool b) */
+static JSBool JSFUNC_SetSmoothLighting(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
 
 /* Function: void 	SetVerticalSync			(bool bSync) */
 static JSBool JSFUNC_SetVerticalSync(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);

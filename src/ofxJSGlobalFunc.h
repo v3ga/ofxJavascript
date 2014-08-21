@@ -65,21 +65,29 @@ class ofxJSGlobalFunc
         void    BeginShape              ();
         void    EndShape                ();
         void    Vertex                  (float x1, float y1);
-        void    NextContour(bool bClose=false);
-        void    SetPolyMode   (int mode);
-    void    BackgroundGradient      (float r1, float g1, float b1, float r2, float g2, float b2, int mode);
+        void    NextContour             (bool bClose=false);
+        void    SetPolyMode             (int mode);
+    void    BackgroundGradient          (float r1, float g1, float b1, float r2, float g2, float b2, int mode);
     
-    //---------------------of3Dgraphics------------------
+    //---------------------of3Dgraphics--------------
     
-    void    DrawBox     (float x, float y, float z, float width, float height, float depth);
-    void    DrawCone     (float x, float y, float z, float radius, float height);
-    void    DrawCylinder    (float x, float y, float radius, float height);
-    void    DrawIcoSphere   (float x, float y, float z, float radius);
-    void    DrawPlane(float x, float y, float width, float height);
-    void    DrawSphere(float x, float y, float radius);
+    void    DrawBox                 (float x, float y, float z, float width, float height, float depth);
+    void    DrawCone                (float x, float y, float z, float radius, float height);
+    void    DrawCylinder            (float x, float y, float radius, float height);
+    void    DrawIcoSphere           (float x, float y, float z, float radius);
+    void    DrawPlane               (float x, float y, float width, float height);
+    void    DrawSphere              (float x, float y, float radius);
     
+    //---------------------ofLight------------------
     
-    //---------------------------------------------------
+    void DisableLighting                    ();
+    void DisableSeparateSpecularLight       ();
+    void EnableLighting                     ();
+    void EnableSeparateSpecularLight        ();
+    bool GetLightingEnabled                 ();
+    void SetSmoothLighting                  (bool b);
+    
+    //-----------------------------------------------
        
     
 

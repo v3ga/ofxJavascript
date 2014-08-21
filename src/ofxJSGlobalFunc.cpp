@@ -252,6 +252,25 @@ OFX_DEFINE_JSFUNC_4(ofxJSGlobalFunc,DrawIcoSphere, float, float, float, float)
 OFX_DEFINE_JSFUNC_4(ofxJSGlobalFunc,DrawPlane, float, float, float, float)
 //--------------------------------------------------------------
 OFX_DEFINE_JSFUNC_3(ofxJSGlobalFunc,DrawSphere, float, float, float)
+//--------------------------------------------------------------
+
+OFX_DEFINE_JSFUNC_0(ofxJSGlobalFunc,DisableLighting)
+//--------------------------------------------------------------
+OFX_DEFINE_JSFUNC_0(ofxJSGlobalFunc,DisableSeparateSpecularLight)
+//--------------------------------------------------------------
+OFX_DEFINE_JSFUNC_0(ofxJSGlobalFunc,EnableLighting)
+//--------------------------------------------------------------
+OFX_DEFINE_JSFUNC_0(ofxJSGlobalFunc,EnableSeparateSpecularLight)
+//--------------------------------------------------------------
+OFX_DEFINE_JSFUNC_0_RETURN(bool,ofxJSGlobalFunc,GetLightingEnabled)
+//--------------------------------------------------------------
+
+void ofxJSGlobalFunc::SetSmoothLighting(bool b)
+{
+	ofSetSmoothLighting(b);
+}
+
+
 
 
 

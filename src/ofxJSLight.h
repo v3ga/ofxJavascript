@@ -28,8 +28,14 @@ class ofxJSLight
 		void						destroy			();
 		void						enable			();
 		void						disable			();
-
+        void                        setAmbientColor ( float r, float g, float b);
+        void                        setDiffuseColor ( float r, float g, float b);
+        void                        setDirectional  ();
+        void                        setPointLight ();
+        void                        setSpecularColor ( float r, float g, float b);
+        void                        setSpotlight (float spotCutOff=45.f, float exponent=0.f);
 		int							getLightID		();
+
 		/* end */
 
 
