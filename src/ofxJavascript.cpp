@@ -129,6 +129,7 @@ void ofxJavascript::initializeClasses()
 	ofxJSTrueTypeFont::initialize();
 	ofxJSImage::initialize();
 	ofxJSOpenGL::initialize();
+	ofxJSNode::initialize();
 	ofxJSLight::initialize();
 }
 

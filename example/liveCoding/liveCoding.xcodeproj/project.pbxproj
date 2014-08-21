@@ -45,6 +45,7 @@
 		F937A17019A5EE5800F618B6 /* libnspr4.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = F937A16619A5EDF800F618B6 /* libnspr4.dylib */; };
 		F937A17319A5EE7200F618B6 /* js.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F937A17119A5EE7200F618B6 /* js.cpp */; };
 		F9577D6B19A5EFA9001E9096 /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
+		F9577D7519A60194001E9096 /* ofxJSNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9577D7319A60194001E9096 /* ofxJSNode.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -199,6 +200,10 @@
 		F937A16619A5EDF800F618B6 /* libnspr4.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libnspr4.dylib; sourceTree = "<group>"; };
 		F937A17119A5EE7200F618B6 /* js.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = js.cpp; sourceTree = "<group>"; };
 		F937A17219A5EE7200F618B6 /* js.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = js.h; sourceTree = "<group>"; };
+		F9577D7019A60169001E9096 /* ofxJSNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxJSNode.cpp; path = ../../src/js/ofxJSNode.cpp; sourceTree = "<group>"; };
+		F9577D7119A60169001E9096 /* ofxJSNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxJSNode.h; path = ../../src/js/ofxJSNode.h; sourceTree = "<group>"; };
+		F9577D7319A60194001E9096 /* ofxJSNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxJSNode.cpp; path = ../../src/ofxJSNode.cpp; sourceTree = "<group>"; };
+		F9577D7419A60194001E9096 /* ofxJSNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxJSNode.h; path = ../../src/ofxJSNode.h; sourceTree = "<group>"; };
 		FADC98DA7032D8493FC6AA56 /* ofxJSImage.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxJSImage.h; path = ../../../../addons/ofxJavascript/src/js/ofxJSImage.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -282,6 +287,8 @@
 				B155496CC048692C5AAEDACF /* ofxJSOpenGL.h */,
 				719E47D125C0DF3C6405FE20 /* ofxJSTrueTypeFont.cpp */,
 				C43AB08B7AB7D2469179BF7A /* ofxJSTrueTypeFont.h */,
+				F9577D7019A60169001E9096 /* ofxJSNode.cpp */,
+				F9577D7119A60169001E9096 /* ofxJSNode.h */,
 			);
 			name = js;
 			sourceTree = "<group>";
@@ -463,6 +470,8 @@
 				C754D42199D18B3D02969F25 /* ofxJSImage.h */,
 				D3209C945382CF05D8E2A564 /* ofxJSLight.cpp */,
 				F2D33D0B6C591928DBF81E69 /* ofxJSLight.h */,
+				F9577D7319A60194001E9096 /* ofxJSNode.cpp */,
+				F9577D7419A60194001E9096 /* ofxJSNode.h */,
 				0B6BBE3B036FFFFAFABFBD4C /* ofxJSOfConstants.cpp */,
 				8F315604E8471B9444AC10FD /* ofxJSOpenGL.cpp */,
 				7C3CAFDF30ECE0FF0E78E325 /* ofxJSOpenGL.h */,
@@ -597,6 +606,7 @@
 				2C2E6777921E87C8DA76C50B /* ofxJSOpenGL.cpp in Sources */,
 				BACD3F024F6611E2835AD1ED /* ofxJSScript.cpp in Sources */,
 				A22980868F16CA6560D0B23C /* ofxJSTrueTypeFont.cpp in Sources */,
+				F9577D7519A60194001E9096 /* ofxJSNode.cpp in Sources */,
 				8F15B74F26B9991BC7F74358 /* ofxJSUtils.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

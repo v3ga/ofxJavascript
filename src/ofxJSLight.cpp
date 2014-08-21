@@ -7,6 +7,7 @@
 //
 
 #include "ofxJSLight.h"
+#include "ofxJSNode.h"
 #include "js/ofxJSLight.cpp"
 
 

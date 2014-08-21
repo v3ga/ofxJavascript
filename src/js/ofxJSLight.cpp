@@ -20,11 +20,14 @@ JSObject *ofxJSLight::JSInit(JSContext *cx, JSObject *obj) {
 	jsval oldobj;
 	if (JS_TRUE == JS_LookupProperty(cx, obj, ofxJSLight::_jsClass.name, &oldobj) && JSVAL_IS_OBJECT(oldobj))
 		return JSVAL_TO_OBJECT(oldobj);
-	return JS_InitClass(cx, obj, NULL, &ofxJSLight::_jsClass,
+	return JS_InitClass(cx, obj, /*NULL*/ofxJSNode::JSInit(cx, obj), &ofxJSLight::_jsClass,
     	                                 ofxJSLight::JSConstructor, 0,
     	                                 NULL, ofxJSLight::_JSFunctionSpec,
     	                                 NULL, NULL);
 }
+
+// 	ofxJSNode::JSInit	(cx, obj);
+
 
 ///// JavaScript Constructor
 JSBool ofxJSLight::JSConstructor(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
