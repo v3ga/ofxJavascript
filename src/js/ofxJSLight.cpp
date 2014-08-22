@@ -329,13 +329,13 @@ JSBool ofxJSLight::JSFUNC_rotate(JSContext *cx, JSObject *obj, uintN argc, jsval
     }
 }
 
-JSBool ofxJSLight::JSFUNC_setPosition(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
+JSBool ofxJSLight::JSFUNC_setAmbientColor(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
 	ofxJSLight *p = (ofxJSLight*)JS_GetPrivate(cx, obj);
 	if (argc == 3) {
-		/* Function: void							setPosition(float px, float py, float pz) */
+		/* Function: void							setAmbientColor		(float r, float g, float b) */
 		if (JSVAL_IS_NUMBER(argv[0]) && JSVAL_IS_NUMBER(argv[1]) && JSVAL_IS_NUMBER(argv[2])) {
             
-            p->setPosition(
+            p->setAmbientColor(
                            __JSVal_TO_float(argv[0]),
                            __JSVal_TO_float(argv[1]),
                            __JSVal_TO_float(argv[2])
