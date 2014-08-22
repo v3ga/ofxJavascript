@@ -269,8 +269,11 @@ void ofxJSGlobalFunc::SetSmoothLighting(bool b)
 {
 	ofSetSmoothLighting(b);
 }
-
-
+//--------------------------------------------------------------
+float ofxJSGlobalFunc::Noise(float x, float y, float z)
+{
+	ofNoise(x, y, z);
+}
 
 
 

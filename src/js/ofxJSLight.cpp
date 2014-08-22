@@ -76,11 +76,46 @@ JSFunctionSpec ofxJSLight::_JSFunctionSpec[] = {
     { "setPointLight", JSFUNC_setPointLight, 0, 0, 0 },
     { "setSpecularColor", JSFUNC_setSpecularColor, 3, 0, 0 },
     { "setSpotlight", JSFUNC_setSpotlight, 2, 0, 0 },
+    { "setPosition", JSFUNC_setPosition, 3, 0, 0 },
+    { "truck", JSFUNC_truck, 1, 0, 0 },
+    { "boom", JSFUNC_boom, 1, 0, 0 },
+    { "dolly", JSFUNC_dolly, 1, 0, 0 },
+    { "getX", JSFUNC_getX, 0, 0, 0 },
+    { "getY", JSFUNC_getY, 0, 0, 0 },
+    { "getZ", JSFUNC_getZ, 0, 0, 0 },
+    { "move", JSFUNC_move, 3, 0, 0 },
+    { "rotate", JSFUNC_rotate, 4, 0, 0 },
+    { "setGlobalPosition", JSFUNC_setGlobalPosition, 3, 0, 0 },
+    { "orbit", JSFUNC_orbit, 6, 0, 0 },
+    { "setOrientation", JSFUNC_orbit, 3, 0, 0 },
+    { "rotateAround", JSFUNC_rotateAround, 7, 0, 0 },
 	{ 0, 0, 0, 0, 0 }
     
 };
 
 ///// JavaScript Function Wrappers
+
+
+
+JSBool ofxJSLight::JSFUNC_boom(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
+	ofxJSLight *p = (ofxJSLight*)JS_GetPrivate(cx, obj);
+	if (argc == 1) {
+		/* Function: void							boom		(float amount) */
+		if (JSVAL_IS_NUMBER(argv[0])) {
+            
+            p->boom(
+                            __JSVal_TO_float(argv[0])
+                            );
+            
+            return JS_TRUE;
+        }
+        
+        
+        return JS_FALSE;
+    }
+}
+
+
 JSBool ofxJSLight::JSFUNC_destroy(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
 	ofxJSLight *p = (ofxJSLight*)JS_GetPrivate(cx, obj);
 	if (argc == 0) {
@@ -92,6 +127,27 @@ JSBool ofxJSLight::JSFUNC_destroy(JSContext *cx, JSObject *obj, uintN argc, jsva
 
 	return JS_FALSE;
 }
+
+
+JSBool ofxJSLight::JSFUNC_dolly(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
+	ofxJSLight *p = (ofxJSLight*)JS_GetPrivate(cx, obj);
+	if (argc == 1) {
+		/* Function: void							dolly		(float amount) */
+		if (JSVAL_IS_NUMBER(argv[0])) {
+            
+            p->dolly(
+                    __JSVal_TO_float(argv[0])
+                    );
+            
+            return JS_TRUE;
+        }
+        
+        
+        return JS_FALSE;
+    }
+}
+
+
 
 JSBool ofxJSLight::JSFUNC_disable(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
 	ofxJSLight *p = (ofxJSLight*)JS_GetPrivate(cx, obj);
@@ -130,16 +186,185 @@ JSBool ofxJSLight::JSFUNC_getLightID(JSContext *cx, JSObject *obj, uintN argc, j
 }
 
 
-JSBool ofxJSLight::JSFUNC_setAmbientColor(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
+JSBool ofxJSLight::JSFUNC_getX(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
+	ofxJSLight *p = (ofxJSLight*)JS_GetPrivate(cx, obj);
+	if (argc == 0) {
+		/* Function: float							getX		() */
+        *rval = __int_TO_JSVal(cx,p->getX());
+        return JS_TRUE;
+	}
+    
+    
+	return JS_FALSE;
+}
+
+JSBool ofxJSLight::JSFUNC_getY(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
+	ofxJSLight *p = (ofxJSLight*)JS_GetPrivate(cx, obj);
+	if (argc == 0) {
+		/* Function: float							getY		() */
+        *rval = __int_TO_JSVal(cx,p->getY());
+        return JS_TRUE;
+	}
+    
+    
+	return JS_FALSE;
+}
+
+JSBool ofxJSLight::JSFUNC_getZ(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
+	ofxJSLight *p = (ofxJSLight*)JS_GetPrivate(cx, obj);
+	if (argc == 0) {
+		/* Function: float							getZ		() */
+        *rval = __int_TO_JSVal(cx,p->getZ());
+        return JS_TRUE;
+	}
+    
+    
+	return JS_FALSE;
+}
+
+
+JSBool ofxJSLight::JSFUNC_move(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
 	ofxJSLight *p = (ofxJSLight*)JS_GetPrivate(cx, obj);
 	if (argc == 3) {
-		/* Function: int							getLightID		() */
+		/* Function: void							move		(float x, float y, float z) */
 		if (JSVAL_IS_NUMBER(argv[0]) && JSVAL_IS_NUMBER(argv[1]) && JSVAL_IS_NUMBER(argv[2])) {
+            
+            p->move(
+                     __JSVal_TO_float(argv[0]),
+                     __JSVal_TO_float(argv[1]),
+                     __JSVal_TO_float(argv[2])
+                     );
+            
+            return JS_TRUE;
+        }
+        
+        
+        return JS_FALSE;
+    }
+}
 
-            p->setAmbientColor(
+
+
+JSBool ofxJSLight::JSFUNC_orbit(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
+	ofxJSLight *p = (ofxJSLight*)JS_GetPrivate(cx, obj);
+	if (argc < 6) return JS_FALSE;
+	if (argc == 6) {
+		/* Function: void	orbit				(float longitude, float latitude, float radius, float cx, float cy, float cz) */
+		if (JSVAL_IS_NUMBER(argv[0]) && JSVAL_IS_NUMBER(argv[1]) && JSVAL_IS_NUMBER(argv[2]) && JSVAL_IS_NUMBER(argv[3]) && JSVAL_IS_NUMBER(argv[4]) && JSVAL_IS_NUMBER(argv[5])) {
+			p->orbit(
+                                                 __JSVal_TO_float(argv[0]),
+                                                 __JSVal_TO_float(argv[1]),
+                                                 __JSVal_TO_float(argv[2]),
+                                                 __JSVal_TO_float(argv[3]),
+                                                 __JSVal_TO_float(argv[4]),
+                                                 __JSVal_TO_float(argv[5])
+                                                 );
+			return JS_TRUE;
+		}
+	}
+    
+    
+	return JS_FALSE;
+}
+
+
+
+JSBool ofxJSLight::JSFUNC_pan(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
+	ofxJSLight *p = (ofxJSLight*)JS_GetPrivate(cx, obj);
+	if (argc == 1) {
+		/* Function: void							pan(float degrees) */
+		if (JSVAL_IS_NUMBER(argv[0])) {
+            
+            p->pan(
+                    __JSVal_TO_float(argv[0])
+                    );
+            
+            return JS_TRUE;
+        }
+        
+        
+        return JS_FALSE;
+    }
+}
+
+
+
+JSBool ofxJSLight::JSFUNC_roll(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
+	ofxJSLight *p = (ofxJSLight*)JS_GetPrivate(cx, obj);
+	if (argc == 1) {
+		/* Function: void							roll(float degrees) */
+		if (JSVAL_IS_NUMBER(argv[0])) {
+            
+            p->roll(
+                    __JSVal_TO_float(argv[0])
+                    );
+            
+            return JS_TRUE;
+        }
+        
+        
+        return JS_FALSE;
+    }
+}
+
+
+JSBool ofxJSLight::JSFUNC_rotate(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
+	ofxJSLight *p = (ofxJSLight*)JS_GetPrivate(cx, obj);
+	if (argc == 4) {
+		/* Function: void							rotate		(float degrees, float vx, float vy, float vz) */
+		if (JSVAL_IS_NUMBER(argv[0]) && JSVAL_IS_NUMBER(argv[1]) && JSVAL_IS_NUMBER(argv[2]) && JSVAL_IS_NUMBER(argv[3])) {
+            
+            p->rotate(
+                    __JSVal_TO_float(argv[0]),
+                    __JSVal_TO_float(argv[1]),
+                    __JSVal_TO_float(argv[2]),
+                    __JSVal_TO_float(argv[3])
+                    );
+            
+            return JS_TRUE;
+        }
+        
+        
+        return JS_FALSE;
+    }
+}
+
+JSBool ofxJSLight::JSFUNC_setPosition(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
+	ofxJSLight *p = (ofxJSLight*)JS_GetPrivate(cx, obj);
+	if (argc == 3) {
+		/* Function: void							setPosition(float px, float py, float pz) */
+		if (JSVAL_IS_NUMBER(argv[0]) && JSVAL_IS_NUMBER(argv[1]) && JSVAL_IS_NUMBER(argv[2])) {
+            
+            p->setPosition(
+                           __JSVal_TO_float(argv[0]),
+                           __JSVal_TO_float(argv[1]),
+                           __JSVal_TO_float(argv[2])
+                           );
+            
+            return JS_TRUE;
+        }
+        
+        
+        return JS_FALSE;
+    }
+}
+
+
+
+JSBool ofxJSLight::JSFUNC_rotateAround(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
+	ofxJSLight *p = (ofxJSLight*)JS_GetPrivate(cx, obj);
+	if (argc == 7) {
+		/* Function: int							rotateAround		(float degrees, float ax, float ay, float az, float cx, float cy, float cz) */
+		if (JSVAL_IS_NUMBER(argv[0]) && JSVAL_IS_NUMBER(argv[1]) && JSVAL_IS_NUMBER(argv[2]) && JSVAL_IS_NUMBER(argv[3]) && JSVAL_IS_NUMBER(argv[4]) && JSVAL_IS_NUMBER(argv[5]) && JSVAL_IS_NUMBER(argv[6])) {
+
+            p->rotateAround(
                                __JSVal_TO_float(argv[0]),
                                __JSVal_TO_float(argv[1]),
-                               __JSVal_TO_float(argv[2])
+                               __JSVal_TO_float(argv[2]),
+                               __JSVal_TO_float(argv[3]),
+                               __JSVal_TO_float(argv[4]),
+                               __JSVal_TO_float(argv[5]),
+                               __JSVal_TO_float(argv[6])
             );
         
         return JS_TRUE;
@@ -149,6 +374,27 @@ JSBool ofxJSLight::JSFUNC_setAmbientColor(JSContext *cx, JSObject *obj, uintN ar
 	return JS_FALSE;
 }
 }
+
+JSBool ofxJSLight::JSFUNC_setGlobalPosition(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
+	ofxJSLight *p = (ofxJSLight*)JS_GetPrivate(cx, obj);
+	if (argc == 3) {
+		/* Function: void							setGlobalPosition		(float px, float py, float pz) */
+		if (JSVAL_IS_NUMBER(argv[0]) && JSVAL_IS_NUMBER(argv[1]) && JSVAL_IS_NUMBER(argv[2])) {
+            
+            p->setGlobalPosition(
+                      __JSVal_TO_float(argv[0]),
+                      __JSVal_TO_float(argv[1]),
+                      __JSVal_TO_float(argv[2])
+                      );
+            
+            return JS_TRUE;
+        }
+        
+        
+        return JS_FALSE;
+    }
+}
+
 
 
 JSBool ofxJSLight::JSFUNC_setDiffuseColor(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
@@ -226,6 +472,87 @@ JSBool ofxJSLight::JSFUNC_setSpotlight(JSContext *cx, JSObject *obj, uintN argc,
                                 __JSVal_TO_float(argv[0]),
                                 __JSVal_TO_float(argv[1])
                                 );
+            
+            return JS_TRUE;
+        }
+        
+        
+        return JS_FALSE;
+    }
+}
+
+JSBool ofxJSLight::JSFUNC_setOrientation(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
+	ofxJSLight *p = (ofxJSLight*)JS_GetPrivate(cx, obj);
+	if (argc < 3) return JS_FALSE;
+	if (argc == 3) {
+		/* Function: void	setOrientation				(float rot_x, float rot_y, float rot_z) */
+		if (JSVAL_IS_NUMBER(argv[0]) && JSVAL_IS_NUMBER(argv[1]) && JSVAL_IS_NUMBER(argv[2])) {
+			p->setOrientation(
+                     __JSVal_TO_float(argv[0]),
+                     __JSVal_TO_float(argv[1]),
+                     __JSVal_TO_float(argv[2])
+                     );
+			return JS_TRUE;
+		}
+	
+    
+    
+	return JS_FALSE;
+}
+
+}
+
+JSBool ofxJSLight::JSFUNC_setPosition(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
+	ofxJSLight *p = (ofxJSLight*)JS_GetPrivate(cx, obj);
+    if (argc < 3) return JS_FALSE;
+	if (argc == 3) {
+		/* Function: void							setPosition(float px, float py, float pz) */
+		if (JSVAL_IS_NUMBER(argv[0]) && JSVAL_IS_NUMBER(argv[1]) && JSVAL_IS_NUMBER(argv[2])) {
+            
+            p->setPosition(
+                            __JSVal_TO_float(argv[0]),
+                            __JSVal_TO_float(argv[1]),
+                            __JSVal_TO_float(argv[2])
+                            );
+            
+            return JS_TRUE;
+        }
+        
+        
+        return JS_FALSE;
+    }
+}
+
+
+JSBool ofxJSLight::JSFUNC_tilt(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
+	ofxJSLight *p = (ofxJSLight*)JS_GetPrivate(cx, obj);
+	if (argc == 1) {
+		/* Function: void							tilt(float degrees) */
+		if (JSVAL_IS_NUMBER(argv[0])) {
+            
+            p->tilt(
+                           __JSVal_TO_float(argv[0])
+                           );
+            
+            return JS_TRUE;
+        }
+        
+        
+        return JS_FALSE;
+    }
+}
+
+
+
+JSBool ofxJSLight::JSFUNC_truck(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
+	ofxJSLight *p = (ofxJSLight*)JS_GetPrivate(cx, obj);
+	if (argc == 1) {
+		/* Function: void							truck		(float amount) */
+		if (JSVAL_IS_NUMBER(argv[0])) {
+            
+            p->truck(
+                    __JSVal_TO_float(argv[0])
+                    );
             
             return JS_TRUE;
         }

@@ -54,11 +54,20 @@ enum {
 static JSFunctionSpec _JSFunctionSpec[];
 
 ///// JavaScript Function Wrapper Prototypes
+
+/* Function: void							boom (float amount) */
+static JSBool JSFUNC_boom(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+
+
 /* Function: void						destroy			() */
 static JSBool JSFUNC_destroy(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
 
 /* Function: void						disable			() */
 static JSBool JSFUNC_disable(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+
+/* Function: void							dolly (float amount) */
+static JSBool JSFUNC_dolly(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+
 
 /* Function: void						enable			() */
 static JSBool JSFUNC_enable(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
@@ -67,8 +76,38 @@ static JSBool JSFUNC_enable(JSContext *cx, JSObject *obj, uintN argc, jsval *arg
 static JSBool JSFUNC_getLightID(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
 
 
+/* Function: float							getX		() */
+static JSBool JSFUNC_getX(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+
+/* Function: float							getY		() */
+static JSBool JSFUNC_getY(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+
+/* Function: float							getZ		() */
+static JSBool JSFUNC_getZ(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+
+/* Function: void						move (float x, float y, float z)			() */
+static JSBool JSFUNC_move(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+
+
+/* Function: void							pan (float degrees) */
+static JSBool JSFUNC_pan(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+
+/* Function: void							roll (float degrees) */
+static JSBool JSFUNC_roll(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+
+/* Function: void							rotate (float degrees, float vx, float vy, float vz) */
+static JSBool JSFUNC_rotate(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+
+/* Function: void							rotateAround (float degrees, float ax, float ay, float az, float cx, float cy, float cz) */
+static JSBool JSFUNC_rotateAround(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+
+
 /* Function: int							setAmbientColor		(float r, float g, float b) */
 static JSBool JSFUNC_setAmbientColor(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+
+/* Function: void							setGlobalPosition		(float px, float py, float pz) */
+static JSBool JSFUNC_setGlobalPosition(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+
 
 /* Function: int							setDiffuseColor		(float r, float g, float b) */
 static JSBool JSFUNC_setDiffuseColor(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
@@ -79,9 +118,27 @@ static JSBool JSFUNC_setDirectional(JSContext *cx, JSObject *obj, uintN argc, js
 /* Function: void						setPointLight			() */
 static JSBool JSFUNC_setPointLight(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
 
-/* Function: int							setSpecularColor		(float r, float g, float b) */
+/* Function: void							setSpecularColor		(float r, float g, float b) */
 static JSBool JSFUNC_setSpecularColor(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
 
-/* Function: int							setSpotlight(float spotCutOff=45.f, float exponent=0.f) */
+/* Function: void							setSpotlight(float spotCutOff=45.f, float exponent=0.f) */
 static JSBool JSFUNC_setSpotlight(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+
+/* Function: void							setPosition(float px, float py, float pz) */
+static JSBool JSFUNC_setPosition(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+
+/* Function: void							setOrientation(float rot_x, float rot_y, float rot_z) */
+static JSBool JSFUNC_setOrientation(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+
+/* Function: void							tilt (float degrees) */
+static JSBool JSFUNC_tilt(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+
+
+/* Function: void							truck (float amount) */
+static JSBool JSFUNC_truck(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+
+/* Function: void	orbit				(float longitude, float latitude, float radius, float cx, float cy, float cz) */
+static JSBool JSFUNC_orbit(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+
+
 

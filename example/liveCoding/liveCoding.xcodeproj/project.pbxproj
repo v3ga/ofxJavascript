@@ -799,8 +799,7 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_50)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_52)",
-					/Users/julien/Dev/C/of_v0.8.0_osx_release/addons/ofxJavascript/libs/javascript/lib/osx,
-					/Users/julien/Dev/C/of_v0.8.0_osx_release/addons/ofxJavascript/libs/javascript/lib/win32,
+					../../libs/javascript/lib/osx/,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)Debug";
 				SDKROOT = macosx10.8;
@@ -889,8 +888,6 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_49)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_50)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
-					/Users/julien/Dev/C/of_v0.8.0_osx_release/addons/ofxJavascript/libs/javascript/lib/osx,
-					/Users/julien/Dev/C/of_v0.8.0_osx_release/addons/ofxJavascript/libs/javascript/lib/win32,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx10.8;

@@ -41,6 +41,7 @@ class ofxJSGlobalFunc
 		bool	InRange					(float t, float min, float max);
 		float	RadToDeg				(float radians);
 		float	DegToRad				(float degrees);
+    
 		
 		void	NoFill					();
 		void	Fill					();
@@ -146,6 +147,7 @@ class ofxJSGlobalFunc
 
 		void	SaveScreen				(string filename);
 		void	SaveFrame				();
+        float   Noise                   (float x, float y, float z);
 
 		/* end */
 		
