@@ -131,6 +131,10 @@ void ofxJavascript::initializeClasses()
 	ofxJSOpenGL::initialize();
 	ofxJSNode::initialize();
 	ofxJSLight::initialize();
+	ofxJSVideoPlayer::initialize();
+	ofxJSVideoGrabber::initialize();
+	ofxJSOscReceiver::initialize();
+	ofxJSOscMessage::initialize();
 }
 
 //--------------------------------------------------------------

@@ -22,7 +22,7 @@ class testApp : public ofBaseApp{
 		void mousePressed(int x, int y, int button);
 		void mouseReleased(int x, int y, int button);
 
-		bool loadScript		(const char* scriptName);
+		bool loadScript		(const char* scriptName, bool callSetup=true);
 		bool reloadScript	();	
 		void deleteScript	();
 

@@ -22,67 +22,36 @@ using namespace std;
 #define ofxJSCppCallback	JSNative
 
 // --------------------------------------------------------
-// Definition of instance function : 0 args
-#define OFX_INST_DEFINE_JSFUNC_0_RETURN(returnType,className,funcName,instanceRef)\
-		returnType className::funcName(){return instanceRef.funcName();}
-#define OFX_INST_DEFINE_JSFUNC_0(className,funcName,instanceRef) OFX_INST_DEFINE_JSFUNC_0_RETURN(void,className,funcName,instanceRef)
-
 // Definition of function : 0 args
 #define OFX_DEFINE_JSFUNC_0_RETURN(returnType,className,funcName)\
 		returnType className::funcName(){return of##funcName();}
 #define OFX_DEFINE_JSFUNC_0(className,funcName) OFX_DEFINE_JSFUNC_0_RETURN(void,className,funcName)
 
-
 // --------------------------------------------------------
-// Definition of instance function : 1 args
-#define OFX_INST_DEFINE_JSFUNC_1_RETURN(returnType,className,funcName,typeArg0,instanceRef)\
-		returnType className::funcName(typeArg0 a){return instanceRef.funcName(a);}
-#define OFX_INST_DEFINE_JSFUNC_1(className,funcName,typeArg0,instanceRef) OFX_INST_DEFINE_JSFUNC_1_RETURN(void,className,funcName,typeArg0,instanceRef)
-
 // Definition of function : 1 args
 #define OFX_DEFINE_JSFUNC_1_RETURN(returnType,className,funcName,typeArg0)\
 		returnType className::funcName(typeArg0 a){return of##funcName(a);}
 #define OFX_DEFINE_JSFUNC_1(className,funcName,typeArg0) OFX_DEFINE_JSFUNC_1_RETURN(void,className,funcName,typeArg0)
 
 // --------------------------------------------------------
-// Definition of instance function : 2 args
-#define OFX_INST_DEFINE_JSFUNC_2_RETURN(returnType,className,funcName,typeArg0,typeArg1,instanceRef)\
-		returnType className::funcName(typeArg0 a,typeArg1 b){return instanceRef.funcName(a,b);}
-#define OFX_INST_DEFINE_JSFUNC_2(className,funcName,typeArg0,typeArg1,instanceRef) OFX_INST_DEFINE_JSFUNC_2_RETURN(void,className,funcName,typeArg0,typeArg1,instanceRef)
-
 // Definition of function : 2 args
 #define OFX_DEFINE_JSFUNC_2_RETURN(returnType,className,funcName,typeArg0,typeArg1)\
 		returnType className::funcName(typeArg0 a,typeArg1 b){return of##funcName(a,b);}
 #define OFX_DEFINE_JSFUNC_2(className,funcName,typeArg0,typeArg1) OFX_DEFINE_JSFUNC_2_RETURN(void,className,funcName,typeArg0,typeArg1)
 
 // --------------------------------------------------------
-// Definition of instance function : 2 args
-#define OFX_INST_DEFINE_JSFUNC_3_RETURN(returnType,className,funcName,typeArg0,typeArg1,typeArg2,instanceRef)\
-		returnType className::funcName(typeArg0 a,typeArg1 b,typeArg2 c){return instanceRef.funcName(a,b,c);}
-#define OFX_INST_DEFINE_JSFUNC_3(className,funcName,typeArg0,typeArg1,typeArg2,instanceRef) OFX_INST_DEFINE_JSFUNC_3_RETURN(void,className,funcName,typeArg0,typeArg1,typeArg2,instanceRef)
-
 // Definition of function : 3 args
 #define OFX_DEFINE_JSFUNC_3_RETURN(returnType,className,funcName,typeArg0,typeArg1,typeArg2)\
 		returnType className::funcName(typeArg0 a,typeArg1 b,typeArg2 c){return of##funcName(a,b,c);}
 #define OFX_DEFINE_JSFUNC_3(className,funcName,typeArg0,typeArg1,typeArg2) OFX_DEFINE_JSFUNC_3_RETURN(void,className,funcName,typeArg0,typeArg1,typeArg2)
 
 // --------------------------------------------------------
-// Definition of instance function : 4 args
-#define OFX_INST_DEFINE_JSFUNC_4_RETURN(returnType,className,funcName,typeArg0,typeArg1,typeArg2,typeArg3,instanceRef)\
-		returnType className::funcName(typeArg0 a,typeArg1 b,typeArg2 c,typeArg3 d){return instanceRef.funcName(a,b,c,d);}
-#define OFX_INST_DEFINE_JSFUNC_4(className,funcName,typeArg0,typeArg1,typeArg2,typeArg3,instanceRef) OFX_INST_DEFINE_JSFUNC_4_RETURN(void,className,funcName,typeArg0,typeArg1,typeArg2,typeArg3,instanceRef)
-
 // Definition of function : 4 args
 #define OFX_DEFINE_JSFUNC_4_RETURN(returnType,className,funcName,typeArg0,typeArg1,typeArg2,typeArg3)\
 		returnType className::funcName(typeArg0 a,typeArg1 b,typeArg2 c,typeArg3 d){return of##funcName(a,b,c,d);}
 #define OFX_DEFINE_JSFUNC_4(className,funcName,typeArg0,typeArg1,typeArg2,typeArg3) OFX_DEFINE_JSFUNC_4_RETURN(void,className,funcName,typeArg0,typeArg1,typeArg2,typeArg3)
 
 // --------------------------------------------------------
-// Definition of instance function : 5 args
-#define OFX_INST_DEFINE_JSFUNC_5_RETURN(returnType,className,funcName,typeArg0,typeArg1,typeArg2,typeArg3,typeArg4,instanceRef)\
-		returnType className::funcName(typeArg0 a,typeArg1 b,typeArg2 c,typeArg3 d,typeArg4 e){return instanceRef.funcName(a,b,c,d,e);}
-#define OFX_INST_DEFINE_JSFUNC_5(className,funcName,typeArg0,typeArg1,typeArg2,typeArg3,typeArg4,instanceRef) OFX_INST_DEFINE_JSFUNC_5_RETURN(void,className,funcName,typeArg0,typeArg1,typeArg2,typeArg3,typeArg4,instanceRef)
-
 // Definition of function : 5 args
 #define OFX_DEFINE_JSFUNC_5_RETURN(returnType,className,funcName,typeArg0,typeArg1,typeArg2,typeArg3,typeArg4)\
 		returnType className::funcName(typeArg0 a,typeArg1 b,typeArg2 c,typeArg3 d,typeArg4 e){return of##funcName(a,b,c,d,e);}

@@ -17,12 +17,19 @@ void testApp::setup()
 {
 	if (initJS())
 	{
+		string scriptName = "osc/osc.js";
 		// loadScript("spiro/spiro.js");
 		// loadScript("image/image.js");
 		// loadScript("ditance2D/distance2D.js");
 		// loadScript("wheel/wheel.js");
 		// loadScript("header/header.js");
-		loadScript("3d/3d.js");
+		// loadScript("3d/3d.js");
+		// loadScript("videoPlayer/videoPlayer.js");
+		if ( loadScript(scriptName.c_str()) )
+		{
+			ofxJSValue retVal;
+			ofxJSCallFunctionNameGlobal_NoArgs_IfExists("setup_once", retVal);
+		}
 	}
 }
 
@@ -67,7 +74,10 @@ void testApp::draw()
 }
 
 //--------------------------------------------------------------
-void testApp::exit(){
+void testApp::exit()
+{
+	ofxJSValue retVal;
+	ofxJSCallFunctionNameGlobal_NoArgs_IfExists("exit", retVal);
 }
 
 //--------------------------------------------------------------
@@ -146,35 +156,43 @@ void testApp::mouseReleased(int x, int y, int button)
 
 
 //--------------------------------------------------------------
-bool testApp::loadScript(const char* scriptName)
+bool testApp::loadScript(const char* scriptName,bool callSetup)
 {
 //	printf("M_loadScript() > path='%s'\n", s);
 	{
 		ofFile fileScript(ofToDataPath(scriptName));
 		m_pathAbsScript = fileScript.getAbsolutePath();
+
+		if (mp_script){
+			ofxJSValue retVal;
+			ofxJSCallFunctionNameGlobal_NoArgs_IfExists("exit", retVal);
+//			deleteScript();
+		}
 		
-		printf("Loading '%s'\n", m_pathAbsScript.c_str());
+		ofLogNotice("loading " + m_pathAbsScript);
 
 		mp_script = ofxJSLoad(m_pathAbsScript.c_str(), "___tmpScript___");
 		if (mp_script){
 
 			if (ofxJSEval(mp_script))
 			{
-				printf("OK > evaluated '%s'\n", scriptName);
+				ofLogNotice("evaluated " + ofToString(scriptName));
 				
-				// Call setup 
-				ofxJSValue retVal;
-				ofxJSCallFunctionNameGlobal_NoArgs_IfExists("setup", retVal);
+				// Call setup
+				if (callSetup){
+					ofxJSValue retVal;
+					ofxJSCallFunctionNameGlobal_NoArgs_IfExists("setup", retVal);
+				}
 				
 				return true;
 			}
 			else{
-				printf("ERROR > cannot eval script '%s'\n", scriptName);
+				ofLogError("cannot eval script '"+ofToString(scriptName)+"'");
 				deleteScript();
 			}
 		}
 		else{
-			printf("ERROR > cannot load script '%s'\n", scriptName);
+			ofLogError("cannot load script '"+ofToString(scriptName)+"'");
 			deleteScript();
 		}
 	}

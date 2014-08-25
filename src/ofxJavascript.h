@@ -10,14 +10,18 @@
 #include "jsapi.h"
 
 // oFClasses
+#include "ofxJSScript.h"
 #include "ofxJSGlobalFunc.h"
 #include "ofxJSTrueTypeFont.h"
 #include "ofxJSImage.h"
 #include "ofxJSOpenGL.h"
 #include "ofxJSNode.h"
 #include "ofxJSLight.h"
+#include "ofxJSVideoPlayer.h"
+#include "ofxJSVideoGrabber.h"
+#include "ofxJSOscMessage.h"
+#include "ofxJSOscReceiver.h"
 
-class ofxJSScript;
 class ofxJavascript
 {
 	public:

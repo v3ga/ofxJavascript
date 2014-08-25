@@ -1,5 +1,5 @@
 // Generated source file -- DO NOT EDIT
-// Javascript code from "/Users/Julien/Dev/C/of_preRelease_v0.06_xcode_FAT/addons/ofxJavascript/src/ofxJSImage.h"
+// Javascript code from "/Users/Julien/Dev/C/of_preRelease_v0.06_xcode_FAT/addons/ofxJavascript/src/ofxJSVideoGrabber.h"
 
 public:
 
@@ -50,8 +50,6 @@ static JSObject *newJSObject(JSContext *cx);
 enum {
 	JSVAR_width,
 	JSVAR_height,
-	JSVAR_bpp,
-	JSVAR_type,
 	JSVAR_LASTENUM
 };
 
@@ -61,12 +59,6 @@ void setWidth(int width);
 
 int getHeight();
 void setHeight(int height);
-
-int getBpp();
-void setBpp(int bpp);
-
-int getType();
-void setType(int type);
 
 
 static JSPropertySpec _JSPropertySpec[];
@@ -78,41 +70,50 @@ static JSBool JSSetProperty(JSContext *cx, JSObject *obj, jsval id, jsval *vp);
 static JSFunctionSpec _JSFunctionSpec[];
 
 ///// JavaScript Function Wrapper Prototypes
-/* Function: void 				allocate(int w, int h, int type) */
-static JSBool JSFUNC_allocate(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+/* Function: void			close() */
+static JSBool JSFUNC_close(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
 
-/* Function: void 				clear() */
-static JSBool JSFUNC_clear(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
-
-/* Function: void 				draw(float x, float y) */
-/* Function: void 				draw(float x, float y, float w, float h) */
+/* Function: void 			draw(float x, float y) */
+/* Function: void 			draw(float x, float y, float w, float h) */
 static JSBool JSFUNC_draw(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
 
-/* Function: void 				grabScreen(int x, int y, int w, int h) */
-static JSBool JSFUNC_grabScreen(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+/* Function: int				getTextureId() */
+static JSBool JSFUNC_getTextureId(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
 
-/* Function: bool 				loadImage(string fileName) */
-static JSBool JSFUNC_loadImage(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+/* Function: void			grabFrame() */
+static JSBool JSFUNC_grabFrame(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
 
-/* Function: void				resetAnchor() */
+/* Function: bool			initGrabber(int w, int h, bool bTexture = true) */
+static JSBool JSFUNC_initGrabber(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+
+/* Function: bool 			isFrameNew() */
+static JSBool JSFUNC_isFrameNew(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+
+/* Function: void 			listDevices() */
+static JSBool JSFUNC_listDevices(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+
+/* Function: void			resetAnchor() */
 static JSBool JSFUNC_resetAnchor(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
 
-/* Function: void 				resize(int newWidth, int newHeight) */
-static JSBool JSFUNC_resize(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
-
-/* Function: void 				saveImage(string fileName) */
-static JSBool JSFUNC_saveImage(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
-
-/* Function: void				setAnchorPercent(float xPct, float yPct) */
+/* Function: void			setAnchorPercent(float xPct, float yPct) */
 static JSBool JSFUNC_setAnchorPercent(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
 
-/* Function: void				setAnchorPoint(int x, int y) */
+/* Function: void			setAnchorPoint(int x, int y) */
 static JSBool JSFUNC_setAnchorPoint(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
 
-/* Function: void 				setImageType(int type) */
-static JSBool JSFUNC_setImageType(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+/* Function: void			setDeviceID(int _deviceID) */
+static JSBool JSFUNC_setDeviceID(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
 
-/* Function: void 				setUseTexture(bool bUse) */
+/* Function: void 			setUseTexture(bool bUse) */
 static JSBool JSFUNC_setUseTexture(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+
+/* Function: void 			setVerbose(bool bTalkToMe) */
+static JSBool JSFUNC_setVerbose(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+
+/* Function: void			update() */
+static JSBool JSFUNC_update(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+
+/* Function: void			videoSettings() */
+static JSBool JSFUNC_videoSettings(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
 
 

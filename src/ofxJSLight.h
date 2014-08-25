@@ -54,7 +54,6 @@ class ofxJSLight
     
         /* end */
 
-
 		ofLight						m_light;
 	
 		#include "js/ofxJSLight.h"
