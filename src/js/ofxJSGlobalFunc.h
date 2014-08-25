@@ -216,6 +216,9 @@ static JSBool JSFUNC_NextContour(JSContext *cx, JSObject *obj, uintN argc, jsval
 /* Function: void	NoFill					() */
 static JSBool JSFUNC_NoFill(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
 
+/* Function: float	noise				(float x,float y, float z) */
+static JSBool JSFUNC_Noise(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+
 /* Function: float	Normalize				(float value, float min, float max) */
 static JSBool JSFUNC_Normalize(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
 
@@ -338,4 +341,7 @@ static JSBool JSFUNC_Triangle(JSContext *cx, JSObject *obj, uintN argc, jsval *a
 
 /* Function: void	Vertex				(float x,float y) */
 static JSBool JSFUNC_Vertex(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+
+
+
 

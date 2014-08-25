@@ -102,6 +102,7 @@ JSFunctionSpec ofxJSGlobalFunc::_JSFunctionSpec[] = {
 	{ "Map", JSFUNC_Map, 5, 0, 0 },
     { "NextContour", JSFUNC_NextContour, 1, 0, 0 },
 	{ "NoFill", JSFUNC_NoFill, 0, 0, 0 },
+    {"Noise", JSFUNC_Noise, 3, 0,0 },
 	{ "Normalize", JSFUNC_Normalize, 3, 0, 0 },
 	{ "PopMatrix", JSFUNC_PopMatrix, 0, 0, 0 },
 	{ "PushMatrix", JSFUNC_PushMatrix, 0, 0, 0 },
@@ -142,6 +143,7 @@ JSFunctionSpec ofxJSGlobalFunc::_JSFunctionSpec[] = {
 	{ "Translate", JSFUNC_Translate, 3, 0, 0 },
 	{ "Triangle", JSFUNC_Triangle, 6, 0, 0 },
 	{ "Vertex", JSFUNC_Vertex, 2, 0, 0 },
+    
     { 0, 0, 0, 0, 0 }
 };
 
@@ -1026,6 +1028,29 @@ JSBool ofxJSGlobalFunc::JSFUNC_Normalize(JSContext *cx, JSObject *obj, uintN arg
 
 	return JS_FALSE;
 }
+
+
+JSBool ofxJSGlobalFunc::JSFUNC_Noise(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
+	ofxJSGlobalFunc *p = (ofxJSGlobalFunc*)JS_GetPrivate(cx, obj);
+	if (argc < 3) return JS_FALSE;
+	if (argc == 3) {
+		/* Function: float	Noise				(float x, float y, float z) */
+		if (JSVAL_IS_NUMBER(argv[0]) && JSVAL_IS_NUMBER(argv[1]) && JSVAL_IS_NUMBER(argv[2])) {
+			*rval = __float_TO_JSVal(cx,p->Noise(
+                                                     __JSVal_TO_float(argv[0]),
+                                                     __JSVal_TO_float(argv[1]),
+                                                     __JSVal_TO_float(argv[2])
+                                                     ));
+			return JS_TRUE;
+		}
+	}
+    
+    
+	return JS_FALSE;
+}
+
+
+
 
 JSBool ofxJSGlobalFunc::JSFUNC_PopMatrix(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
 	ofxJSGlobalFunc *p = (ofxJSGlobalFunc*)JS_GetPrivate(cx, obj);
