@@ -120,14 +120,11 @@ JSBool ofxJSVideoGrabber::JSSetProperty(JSContext *cx, JSObject *obj, jsval id, 
 JSFunctionSpec ofxJSVideoGrabber::_JSFunctionSpec[] = {
 	{ "close", JSFUNC_close, 0, 0, 0 },
 	{ "draw", JSFUNC_draw, 2, 0, 0 },
-	{ "getTextureId", JSFUNC_getTextureId, 0, 0, 0 },
-	{ "initGrabber", JSFUNC_initGrabber, 3, 0, 0 },
+		{ "initGrabber", JSFUNC_initGrabber, 2, 0, 0 },
 	{ "isFrameNew", JSFUNC_isFrameNew, 0, 0, 0 },
-	{ "listDevices", JSFUNC_listDevices, 0, 0, 0 },
-	{ "resetAnchor", JSFUNC_resetAnchor, 0, 0, 0 },
-	{ "setAnchorPercent", JSFUNC_setAnchorPercent, 2, 0, 0 },
+			
 	{ "setAnchorPoint", JSFUNC_setAnchorPoint, 2, 0, 0 },
-	{ "setDeviceID", JSFUNC_setDeviceID, 1, 0, 0 },
+	
 	{ "setUseTexture", JSFUNC_setUseTexture, 1, 0, 0 },
 	{ "setVerbose", JSFUNC_setVerbose, 1, 0, 0 },
 	{ "update", JSFUNC_update, 0, 0, 0 },
@@ -178,29 +175,18 @@ JSBool ofxJSVideoGrabber::JSFUNC_draw(JSContext *cx, JSObject *obj, uintN argc, 
 	return JS_FALSE;
 }
 
-JSBool ofxJSVideoGrabber::JSFUNC_getTextureId(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
-	ofxJSVideoGrabber *p = (ofxJSVideoGrabber*)JS_GetPrivate(cx, obj);
-	if (argc == 0) {
-		/* Function: int				getTextureId() */
-			*rval = __int_TO_JSVal(cx,p->getTextureId());
-			return JS_TRUE;
-	}
-
-
-	return JS_FALSE;
-}
 
 
 JSBool ofxJSVideoGrabber::JSFUNC_initGrabber(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
 	ofxJSVideoGrabber *p = (ofxJSVideoGrabber*)JS_GetPrivate(cx, obj);
-	if (argc < 3) return JS_FALSE;
+	if (argc < 2) return JS_FALSE;
 	if (argc == 3) {
 		/* Function: bool			initGrabber(int w, int h, bool bTexture = true) */
-		if (JSVAL_IS_NUMBER(argv[0]) && JSVAL_IS_NUMBER(argv[1]) && JSVAL_IS_BOOLEAN(argv[2])) {
+		if (JSVAL_IS_NUMBER(argv[0]) && JSVAL_IS_NUMBER(argv[1])) {
 			*rval = __bool_TO_JSVal(cx,p->initGrabber(
 				__JSVal_TO_int(argv[0]),
-				__JSVal_TO_int(argv[1]),
-				__JSVal_TO_bool(argv[2])
+				__JSVal_TO_int(argv[1])
+				
 			));
 			return JS_TRUE;
 		}
@@ -222,47 +208,7 @@ JSBool ofxJSVideoGrabber::JSFUNC_isFrameNew(JSContext *cx, JSObject *obj, uintN 
 	return JS_FALSE;
 }
 
-JSBool ofxJSVideoGrabber::JSFUNC_listDevices(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
-	ofxJSVideoGrabber *p = (ofxJSVideoGrabber*)JS_GetPrivate(cx, obj);
-	if (argc == 0) {
-		/* Function: void 			listDevices() */
-			p->listDevices();
-			return JS_TRUE;
-	}
 
-
-	return JS_FALSE;
-}
-
-JSBool ofxJSVideoGrabber::JSFUNC_resetAnchor(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
-	ofxJSVideoGrabber *p = (ofxJSVideoGrabber*)JS_GetPrivate(cx, obj);
-	if (argc == 0) {
-		/* Function: void			resetAnchor() */
-			p->resetAnchor();
-			return JS_TRUE;
-	}
-
-
-	return JS_FALSE;
-}
-
-JSBool ofxJSVideoGrabber::JSFUNC_setAnchorPercent(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
-	ofxJSVideoGrabber *p = (ofxJSVideoGrabber*)JS_GetPrivate(cx, obj);
-	if (argc < 2) return JS_FALSE;
-	if (argc == 2) {
-		/* Function: void			setAnchorPercent(float xPct, float yPct) */
-		if (JSVAL_IS_NUMBER(argv[0]) && JSVAL_IS_NUMBER(argv[1])) {
-			p->setAnchorPercent(
-				__JSVal_TO_float(argv[0]),
-				__JSVal_TO_float(argv[1])
-			);
-			return JS_TRUE;
-		}
-	}
-
-
-	return JS_FALSE;
-}
 
 JSBool ofxJSVideoGrabber::JSFUNC_setAnchorPoint(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
 	ofxJSVideoGrabber *p = (ofxJSVideoGrabber*)JS_GetPrivate(cx, obj);

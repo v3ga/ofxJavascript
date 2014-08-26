@@ -147,8 +147,8 @@ JSFunctionSpec ofxJSVideoPlayer::_JSFunctionSpec[] = {
 	{ "nextFrame", JSFUNC_nextFrame, 0, 0, 0 },
 	{ "play", JSFUNC_play, 0, 0, 0 },
 	{ "previousFrame", JSFUNC_previousFrame, 0, 0, 0 },
-	{ "resetAnchor", JSFUNC_resetAnchor, 0, 0, 0 },
-	{ "setAnchorPercent", JSFUNC_setAnchorPercent, 2, 0, 0 },
+
+
 	{ "setAnchorPoint", JSFUNC_setAnchorPoint, 2, 0, 0 },
 	{ "setFrame", JSFUNC_setFrame, 1, 0, 0 },
 	{ "setLoopState", JSFUNC_setLoopState, 1, 0, 0 },
@@ -351,37 +351,6 @@ JSBool ofxJSVideoPlayer::JSFUNC_previousFrame(JSContext *cx, JSObject *obj, uint
 
 	return JS_FALSE;
 }
-
-JSBool ofxJSVideoPlayer::JSFUNC_resetAnchor(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
-	ofxJSVideoPlayer *p = (ofxJSVideoPlayer*)JS_GetPrivate(cx, obj);
-	if (argc == 0) {
-		/* Function: void				resetAnchor() */
-			p->resetAnchor();
-			return JS_TRUE;
-	}
-
-
-	return JS_FALSE;
-}
-
-JSBool ofxJSVideoPlayer::JSFUNC_setAnchorPercent(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
-	ofxJSVideoPlayer *p = (ofxJSVideoPlayer*)JS_GetPrivate(cx, obj);
-	if (argc < 2) return JS_FALSE;
-	if (argc == 2) {
-		/* Function: void				setAnchorPercent(float xPct, float yPct) */
-		if (JSVAL_IS_NUMBER(argv[0]) && JSVAL_IS_NUMBER(argv[1])) {
-			p->setAnchorPercent(
-				__JSVal_TO_float(argv[0]),
-				__JSVal_TO_float(argv[1])
-			);
-			return JS_TRUE;
-		}
-	}
-
-
-	return JS_FALSE;
-}
-
 JSBool ofxJSVideoPlayer::JSFUNC_setAnchorPoint(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval) {
 	ofxJSVideoPlayer *p = (ofxJSVideoPlayer*)JS_GetPrivate(cx, obj);
 	if (argc < 2) return JS_FALSE;

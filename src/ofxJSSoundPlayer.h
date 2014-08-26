@@ -36,9 +36,9 @@ class ofxJSSoundPlayer
 		void stop();
 
 		void setVolume(float vol);
-		void setPan(float vol);
+		void setPan(float pan);
 		void setSpeed(float spd);
-		void setPaused(bool bP);
+		void setPaused(bool paused);
 		void setLoop(bool bLp);
 		void setMultiPlay(bool bMp);
 		void setPosition(float pct);

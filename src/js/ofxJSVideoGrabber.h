@@ -83,14 +83,13 @@ static JSBool JSFUNC_getTextureId(JSContext *cx, JSObject *obj, uintN argc, jsva
 /* Function: void			grabFrame() */
 static JSBool JSFUNC_grabFrame(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
 
-/* Function: bool			initGrabber(int w, int h, bool bTexture = true) */
+/* Function: bool			initGrabber(int w, int h) */
 static JSBool JSFUNC_initGrabber(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
 
 /* Function: bool 			isFrameNew() */
 static JSBool JSFUNC_isFrameNew(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
 
-/* Function: void 			listDevices() */
-static JSBool JSFUNC_listDevices(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
+
 
 /* Function: void			resetAnchor() */
 static JSBool JSFUNC_resetAnchor(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);

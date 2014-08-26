@@ -17,7 +17,9 @@ void testApp::setup()
 {
 	if (initJS())
 	{
-		string scriptName = "osc/osc.js";
+//		string scriptName = "osc/osc.js";
+		//string scriptName = "videoGrabber/videoGrabber.js";
+        string scriptName = "osc/osc.js";
 		// loadScript("spiro/spiro.js");
 		// loadScript("image/image.js");
 		// loadScript("ditance2D/distance2D.js");

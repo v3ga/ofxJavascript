@@ -30,21 +30,21 @@ class ofxJSVideoGrabber
 		static void				finalize		();
 
 		/* javascript functions */
-		void 			listDevices();
+
 		bool 			isFrameNew();
 		void			close();
-		bool			initGrabber(int w, int h, bool bTexture = true);
+		bool			initGrabber(int w, int h);
 		void			videoSettings();
 		void 			setVerbose(bool bTalkToMe);
 		void			setDeviceID(int _deviceID);
 		void 			setUseTexture(bool bUse);
-		int				getTextureId();
-		void 			draw(float x, float y, float w, float h);
+
+        void 			draw(float x, float y, float w, float h);
 		void 			draw(float x, float y);
 		void			update();
-        void			setAnchorPercent(float xPct, float yPct);
-        void			setAnchorPoint(int x, int y);
-        void			resetAnchor();
+
+        void			setAnchorPoint(float x, float y);
+   
 		/* end */
 
 		/* javascript variables

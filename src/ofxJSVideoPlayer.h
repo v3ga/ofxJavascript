@@ -43,7 +43,8 @@ class ofxJSVideoPlayer
 		bool				getIsMovieDone();
 
 		void 				setPosition(float pct);
-		void 				setVolume(int volume);
+		void 				setVolume(float volume);
+
 		void 				setLoopState(int state);
 		void				setFrame(int frame);
 
@@ -51,9 +52,9 @@ class ofxJSVideoPlayer
 		void 				draw(float x, float y, float w, float h);
 		void 				draw(float x, float y);
 
-        void				setAnchorPercent(float xPct, float yPct);
-        void				setAnchorPoint(int x, int y);
-        void				resetAnchor();
+    
+        void				setAnchorPoint(float x, float y);
+        
 
 		void 				setPaused(bool bPause);
 
