@@ -21,6 +21,7 @@
 #include "ofxJSVideoGrabber.h"
 #include "ofxJSOscMessage.h"
 #include "ofxJSOscReceiver.h"
+#include "ofxJSSoundPlayer.h"
 
 class ofxJavascript
 {

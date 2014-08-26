@@ -5,6 +5,8 @@ this.cam = null;
 function setup()
 {
 	this.cam = new ofxJSVideoGrabber();
+	//this.cam.listDevices();
+
 	this.cam.setDeviceID(0);
 	this.cam.initGrabber(320,240,true);
 
@@ -15,20 +17,20 @@ function setup()
 //--------------------------------------------------------------
 function update(dt)
 {
-	this.cam.update();
+//	this.cam.update();
 }
 
 //--------------------------------------------------------------
 function exit()
 {
-	this.cam.close();
+//	this.cam.close();
 }
 
 
 //--------------------------------------------------------------
 function draw()
 {
-	this.cam.draw(10,50,of.GetWidth(),of.GetHeight());
+//	this.cam.draw(0,0,of.GetWidth(),of.GetHeight());
 }
 
 

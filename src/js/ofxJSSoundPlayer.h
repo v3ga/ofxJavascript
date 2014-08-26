@@ -66,7 +66,7 @@ static JSBool JSFUNC_getPosition(JSContext *cx, JSObject *obj, uintN argc, jsval
 /* Function: float getSpeed() */
 static JSBool JSFUNC_getSpeed(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
 
-/* Function: void loadSound(string fileName, bool stream = false) */
+/* Function: bool loadSound(string fileName, bool stream = false) */
 static JSBool JSFUNC_loadSound(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval);
 
 /* Function: void play() */

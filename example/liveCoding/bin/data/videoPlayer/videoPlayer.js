@@ -19,7 +19,7 @@ function update(dt)
 //--------------------------------------------------------------
 function draw()
 {
-	this.video.draw(0,0);
+	this.video.draw(90,0);
 }
 
 

@@ -135,6 +135,7 @@ void ofxJavascript::initializeClasses()
 	ofxJSVideoGrabber::initialize();
 	ofxJSOscReceiver::initialize();
 	ofxJSOscMessage::initialize();
+    ofxJSSoundPlayer::initialize();
 }
 
 //--------------------------------------------------------------
