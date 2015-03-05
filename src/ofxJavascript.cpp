@@ -133,8 +133,10 @@ void ofxJavascript::initializeClasses()
 	ofxJSLight::initialize();
 	ofxJSVideoPlayer::initialize();
 	ofxJSVideoGrabber::initialize();
+	#ifdef OFX_JS_OSC
 	ofxJSOscReceiver::initialize();
 	ofxJSOscMessage::initialize();
+	#endif
     ofxJSSoundPlayer::initialize();
 }
 

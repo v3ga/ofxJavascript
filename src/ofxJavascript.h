@@ -19,8 +19,10 @@
 #include "ofxJSLight.h"
 #include "ofxJSVideoPlayer.h"
 #include "ofxJSVideoGrabber.h"
+#ifdef OFX_JS_OSC
 #include "ofxJSOscMessage.h"
 #include "ofxJSOscReceiver.h"
+#endif
 #include "ofxJSSoundPlayer.h"
 
 class ofxJavascript
