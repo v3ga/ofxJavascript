@@ -9,7 +9,8 @@ Old but valid google code documentation can be found here : https://code.google.
 ## Projects
 ### Connexions (2015) — 2Roqs
 * Github : https://github.com/v3ga/connexionUsineHydro
-![Mirage](http://v3ga.github.io/Images/ofxJavascript/2015_Connexions_Petite_Poucette.jpeg)
+![Hydroelectric plant](http://v3ga.github.io/Images/ofxJavascript/2015_Connexions_Petite_Poucette.jpeg)
+![Interface](http://v3ga.github.io/Images/ofxJavascript/2015_Connexions_interface.png)
 
 ### Murmur (2013) — Chevalvert & 2Roqs
 * Project website : http://www.m-u-r-m-u-r.me
