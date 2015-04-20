@@ -7,6 +7,10 @@ It was originally developped back in August 2009 and has not really evolved sinc
 Old but valid google code documentation can be found here : https://code.google.com/p/ofxjavascript/
 
 ## Projects
+### Connexions (2015) — 2Roqs
+* Github : https://github.com/v3ga/connexionUsineHydro
+![Mirage](http://v3ga.github.io/Images/ofxJavascript/2015_Connexions_Petite_Poucette.jpeg)
+
 ### Murmur (2013) — Chevalvert & 2Roqs
 * Project website : http://www.m-u-r-m-u-r.me
 * Github : https://github.com/v3ga/murmur
